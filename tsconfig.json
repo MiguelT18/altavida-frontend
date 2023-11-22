@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "/home/miguel/proyectos/clients/altavida/frontend-astro",
+    "paths": {
+      "@components/*": [
+        "src/components/*"
+      ],
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  },
+  "extends": "astro/tsconfigs/strict"
+}

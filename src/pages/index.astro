@@ -1,0 +1,42 @@
+---
+import BgHeroImage01 from "/media/images/index/01_HeroImg.webp";
+import BgHeroImage02 from "/media/images/index/02_HeroImg.webp";
+import BgHeroImage03 from "/media/images/index/03_HeroImg.webp";
+import BgHeroImage04 from "/media/images/index/04_HeroImg.webp";
+
+import { Icon } from "astro-icon";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="AltaVida Srl">
+	<section class="flex justify-center items-end px-10 py-6">
+		<div class="flex flex-col gap-4">
+			<div
+				class="text-white text-sm text-center max-w-[600px] p-5 pt-3 z-10 relative after:block after:absolute after:w-full after:h-full after:backdrop-blur-[4px] after:bg-opacity-60 after:top-0 after:left-0 after:-z-50 before:block before:absolute before:w-full before:h-full before:border-2 before:border-orange before:-top-2 before:-right-2 before:-z-50"
+			>
+				<h2>
+					<strong class="text-orange text-sm">
+						Residencias excepcionales</strong
+					>
+					 donde la elegancia y la comodidad se unen para
+					<strong class="text-orange text-sm">
+						crear experiencias inolvidables.
+					</strong>
+				</h2>
+			</div>
+			<Icon
+				name="ph:arrow-fat-lines-down-duotone"
+				class="text-white w-[40px] animate-bounce mt-8 mx-auto"
+			/>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	section {
+		height: 100vh;
+		background-image: url("/media/images/index/01_HeroImg.webp");
+		background-size: cover;
+		background-position: center;
+	}
+</style>
