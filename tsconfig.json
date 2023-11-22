@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "/home/miguel/proyectos/clients/altavida/frontend-astro",
+    "baseUrl": ".",
     "paths": {
       "@components/*": [
         "src/components/*"

@@ -3,94 +3,94 @@ import HamburgerMenu from "public/media/icons/HamburgerMenu.astro";
 ---
 
 <header
-	id="landing-header"
-	class="absolute py-6 flex lg:flex-col gap-5 items-center top-0 w-full justify-around z-40 text-white border-b-2 border-white bg-black bg-opacity-30"
+  id="landing-header"
+  class="absolute py-6 flex lg:flex-col gap-5 items-center top-0 w-full justify-around z-40 text-white border-b-2 border-white bg-black bg-opacity-40"
 >
-	<a href="/" class="w-navBrandLogo">
-		<img src="/media/logos/brandLogo_white.webp" alt="AltaVida Logo" />
-	</a>
+  <a href="/" class="w-navBrandLogo">
+    <img src="/media/logos/brandLogo_white.webp" alt="AltaVida Logo" />
+  </a>
 
-	<nav class="lg:hidden sm:block">
-		<HamburgerMenu />
-	</nav>
+  <nav class="lg:hidden sm:block">
+    <HamburgerMenu />
+  </nav>
 
-	<nav class="hidden lg:block sm:hidden mt-2">
-		<ul
-			class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2"
-		>
-			<li><a href="/blog">Blog</a></li>
-			<li><a href="/catalogo">Catálogo</a></li>
-			<li><a href="/desarrollos">Desarrollos</a></li>
-			<li><a href="/financiamiento">Financiamiento</a></li>
-			<li><a href="/nosotros">Nosotros</a></li>
-			<li><a href="/testimoniales">Testimonios</a></li>
-		</ul>
-	</nav>
+  <nav class="hidden lg:block sm:hidden mt-2">
+    <ul
+      class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2"
+    >
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/catalogo">Catálogo</a></li>
+      <li><a href="/desarrollos">Desarrollos</a></li>
+      <li><a href="/financiamiento">Financiamiento</a></li>
+      <li><a href="/nosotros">Nosotros</a></li>
+      <li><a href="/testimoniales">Testimonios</a></li>
+    </ul>
+  </nav>
 </header>
 
 <div
-	id="menu-backdrop"
-	class={`
-      absolute bg-orange/60 backdrop-blur-lg rounded-lg
+  id="menu-backdrop"
+  class={`
+      absolute bg-white/30 backdrop-blur-sm rounded-lg
       translate-x-[var(--left)] translate-y-[var(--top)]
       left-0 top-0
       w-[var(--width)] h-[var(--height)]
       transition-all duration-500
-      ease-in-out opacity-0 z-20
+      ease-in-out opacity-0 z-10
     `}
 >
 </div>
 
 <script>
-	if (window.location.pathname !== "/") {
-		const headerEl = document.querySelector("#landing-header") as HTMLElement;
-		headerEl.style.position = "sticky";
-	}
+  if (window.location.pathname !== "/") {
+    const headerEl = document.querySelector("#landing-header") as HTMLElement;
+    headerEl.style.position = "sticky";
+  }
 </script>
 
 <script>
-	const listItem = document.querySelectorAll("#landing-header li");
-	const menuBackDrop = document.querySelector("#menu-backdrop") as HTMLElement;
+  const listItem = document.querySelectorAll("#landing-header li");
+  const menuBackDrop = document.querySelector("#menu-backdrop") as HTMLElement;
 
-	listItem.forEach((item) => {
-		item.addEventListener("mouseenter", () => {
-			const { left, top, width, height } = item.getBoundingClientRect();
+  listItem.forEach((item) => {
+    item.addEventListener("mouseenter", () => {
+      const { left, top, width, height } = item.getBoundingClientRect();
 
-			menuBackDrop.style.setProperty("--left", `${left}px`);
-			menuBackDrop.style.setProperty("--top", `${top}px`);
-			menuBackDrop.style.setProperty("--width", `${width}px`);
-			menuBackDrop.style.setProperty("--height", `${height}px`);
+      menuBackDrop.style.setProperty("--left", `${left}px`);
+      menuBackDrop.style.setProperty("--top", `${top}px`);
+      menuBackDrop.style.setProperty("--width", `${width}px`);
+      menuBackDrop.style.setProperty("--height", `${height}px`);
 
-			menuBackDrop.style.opacity = "1";
-			menuBackDrop.style.visibility = "visible";
-		});
+      menuBackDrop.style.opacity = "1";
+      menuBackDrop.style.visibility = "visible";
+    });
 
-		item.addEventListener("mouseleave", () => {
-			menuBackDrop.style.opacity = "0";
-			menuBackDrop.style.visibility = "hidden";
-		});
-	});
+    item.addEventListener("mouseleave", () => {
+      menuBackDrop.style.opacity = "0";
+      menuBackDrop.style.visibility = "hidden";
+    });
+  });
 </script>
 
 <script>
-	const headerEl = document.querySelector("#landing-header") as HTMLElement;
+  const headerEl = document.querySelector("#landing-header") as HTMLElement;
 
-	const observerOptions = {
-		root: null,
-		rootMargin: "0px", // en cuanto se vea el elemento
-		threshold: 0.9, // porcentaje de visibilidad
-	};
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px", // en cuanto se vea el elemento
+    threshold: 0.9, // porcentaje de visibilidad
+  };
 
-	const observer = new IntersectionObserver((entries) => {
-		entries.forEach((entry) => {
-			const { isIntersecting } = entry;
-			if (isIntersecting) {
-				const color = entry.target.getAttribute("data-header-color");
-				headerEl.style.color = color ?? "";
-			}
-		});
-	}, observerOptions);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const { isIntersecting } = entry;
+      if (isIntersecting) {
+        const color = entry.target.getAttribute("data-header-color");
+        headerEl.style.color = color ?? "";
+      }
+    });
+  }, observerOptions);
 
-	const sectionElements = document.querySelectorAll(".landing-section");
-	sectionElements.forEach((section) => observer.observe(section));
+  const sectionElements = document.querySelectorAll(".landing-section");
+  sectionElements.forEach((section) => observer.observe(section));
 </script>

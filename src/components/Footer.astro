@@ -1,26 +1,51 @@
 ---
-import { AiFillInstagram } from "react-icons/ai";
-import { BsFacebook } from "react-icons/bs";
-import { FaTiktok } from "react-icons/fa";
+import { Icon } from "astro-icon";
 ---
 
 <footer
-	class="w-full flex flex-col justify-center items-center gap-5 py-5 bg-white"
+  class="w-full flex flex-col justify-center items-center gap-5 py-5 bg-white"
 >
-	<img
-		class="max-w-[100px]"
-		src="/media/logos/brandLogo.webp"
-		alt="Brand Logo"
-	/>
-	<div class="flex gap-8 justify-center items-center">
-		<a href="https://www.facebook.com/AltaVidaBienesRaices">
-			<BsFacebook color="#4E5B6D" size={"3em"} />
-		</a>
-		<a href="https://www.instagram.com/altavidabienesraices/">
-			<AiFillInstagram color="#4E5B6D" size={"3em"} />
-		</a>
-		<a href="https://www.tiktok.com/@altavida.oficial">
-			<FaTiktok color="#4E5B6D" size={"3em"} />
-		</a>
-	</div>
+  <img
+    class="max-w-[100px]"
+    src="/media/logos/brandLogo.webp"
+    alt="Brand Logo"
+  />
+  <div class="flex gap-8 justify-center items-center">
+    <a href="https://www.facebook.com/AltaVidaBienesRaices">
+      <Icon
+        name="ph:facebook-logo-duotone"
+        class="text-[#4E5B6D] hover:text-orange transition-colors w-[35px]"
+      />
+    </a>
+    <a href="https://www.instagram.com/altavidabienesraices/">
+      <Icon
+        name="ph:instagram-logo-duotone"
+        class="text-[#4E5B6D] hover:text-orange transition-colors w-[35px]"
+      />
+    </a>
+    <a href="https://www.tiktok.com/@altavida.oficial">
+      <Icon
+        name="ph:tiktok-logo-duotone"
+        class="text-[#4E5B6D] hover:text-orange transition-colors w-[35px]"
+      />
+    </a>
+  </div>
 </footer>
+
+<style>
+  a {
+    animation: iconsAnimation infinite ease-out 1s alternate;
+    &:hover {
+      animation: none;
+    }
+  }
+
+  @keyframes iconsAnimation {
+    from {
+      scale: 1;
+    }
+    to {
+      scale: 1.1;
+    }
+  }
+</style>
