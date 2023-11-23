@@ -1,14 +1,23 @@
 ---
 import { Icon } from "astro-icon";
 import Layout from "../layouts/Layout.astro";
-import Slider from "@components/Slider.jsx";
+import ProjectCard from "@components/ProjectCard.astro";
+
+import AltaMiraLogo from "/media/logos/projects/Logo_AltaMira.webp";
 ---
 
-<Layout title="AltaVida Srl">
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script is:inline>
+  new Swiper(".swiper");
+</script>
+
+<Layout title="AltaVida - Inicio">
   <section class="flex justify-center items-end px-10 py-6">
     <div class="flex flex-col gap-4">
       <div
-        class="text-white text-sm text-center max-w-[600px] p-5 pt-3 z-10 relative after:block after:absolute after:w-full after:h-full after:backdrop-blur-[4px] after:bg-opacity-60 after:top-0 after:left-0 after:-z-50 before:block before:absolute before:w-full before:h-full before:border-2 before:border-orange before:-top-2 before:-right-2 before:-z-50"
+        class="text-white text-sm text-center max-w-[600px] p-5 pt-3 mb-4 z-10 relative after:block after:absolute after:w-full after:h-full after:backdrop-blur-[4px] after:bg-opacity-60 after:top-0 after:left-0 after:-z-50 before:block before:absolute before:w-full before:h-full before:border-2 before:border-orange before:-top-2 before:-right-2 before:-z-50"
       >
         <h2>
           <strong class="text-orange text-sm">
@@ -20,10 +29,10 @@ import Slider from "@components/Slider.jsx";
           </strong>
         </h2>
       </div>
-      <Icon
+      <!-- <Icon
         name="ph:arrow-fat-lines-down-duotone"
         class="text-white w-[40px] animate-bounce mt-8 mx-auto"
-      />
+      /> -->
     </div>
   </section>
 
@@ -44,24 +53,51 @@ import Slider from "@components/Slider.jsx";
       Vida y Bless, hasta las casas personalizadas, cada proyecto es un
       testimonio palpable de excelencia.
     </p>
-    <Slider />
+    <div class="max-w-[420px] mx-auto py-10 text-dark">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <ProjectCard
+              title="Bless"
+              description="Explora condominios verticales elegantes y cómodos. Más de 9 años de experiencia y 350 casas de alta calidad entregadas. Encuentra tu espacio perfecto en nuestros proyectos."
+              image="/public/media/logos/projects/Logo_Bless.webp"
+            />
+          </div>
+          <div class="swiper-slide">
+            <ProjectCard
+              title="Alta Mira"
+              description="Tu hogar en el cielo. Lujo, comodidad y vistas inspiradoras se fusionan en tu nuevo refugio en las alturas."
+              image="/public/media/logos/projects/Logo_AltaMira.webp"
+            />
+          </div>
+          <div class="swiper-slide">
+            <ProjectCard
+              title="Río Vida"
+              description="Naturaleza y comodidad en un hogar perfecto respaldado por años de experiencia en alta calidad. Tu refugio, un nuevo comienzo."
+              image="/public/media/logos/projects/Logo_RioVida.webp"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </Layout>
 
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+/>
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script is:inline>
+  new Swiper(".swiper");
+</script>
+
 <style>
-  html {
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-  }
-
-  section:nth-child(2) {
-    height: 100vh;
-    scroll-snap-align: start;
-  }
-
   section:first-child {
     min-height: 100vh;
-    background-image: url("/media/images/index/01_HeroImg.webp");
+    background-image: url("/media/images/home/01_HeroImg.webp");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -72,16 +108,16 @@ import Slider from "@components/Slider.jsx";
 
   @keyframes changeImage {
     25% {
-      background-image: url("/media/images/index/01_HeroImg.webp");
+      background-image: url("/media/images/home/01_HeroImg.webp");
     }
     50% {
-      background-image: url("/media/images/index/02_HeroImg.webp");
+      background-image: url("/media/images/home/02_HeroImg.webp");
     }
     75% {
-      background-image: url("/media/images/index/03_HeroImg.webp");
+      background-image: url("/media/images/home/03_HeroImg.webp");
     }
     100% {
-      background-image: url("/media/images/index/04_HeroImg.webp");
+      background-image: url("/media/images/home/04_HeroImg.webp");
     }
   }
 </style>
