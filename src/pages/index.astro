@@ -1,11 +1,7 @@
 ---
-import BgHeroImage01 from "/media/images/index/01_HeroImg.webp";
-import BgHeroImage02 from "/media/images/index/02_HeroImg.webp";
-import BgHeroImage03 from "/media/images/index/03_HeroImg.webp";
-import BgHeroImage04 from "/media/images/index/04_HeroImg.webp";
-
 import { Icon } from "astro-icon";
 import Layout from "../layouts/Layout.astro";
+import Slider from "@components/Slider.jsx";
 ---
 
 <Layout title="AltaVida Srl">
@@ -30,13 +26,62 @@ import Layout from "../layouts/Layout.astro";
       />
     </div>
   </section>
+
+  <section class="bg-white pt-12">
+    <div class="pb-6">
+      <h1 class="text-black text-lg text-center font-bold uppercase">
+        Conoce nuestros desarrollos en Tarija
+      </h1>
+      <span
+        class="bg-black block mx-auto w-[40%] h-[2px] relative after:block after:w-[30%] after:h-[5px] after:mx-auto after:bg-orange mt-5 mb-5"
+      ></span>
+    </div>
+    <p class="text-dark text-sm max-w-[900px] mx-auto text-center">
+      Explora nuestro sólido legado de confianza y calidad en los proyectos de
+      Tarija. Con más de nueve años de experiencia y la entrega exitosa de más
+      de 350 casas, no solo construimos viviendas, sino transformamos sueños en
+      realidad. Desde nuestros condominios vanguardistas, como Alta Mira, Río
+      Vida y Bless, hasta las casas personalizadas, cada proyecto es un
+      testimonio palpable de excelencia.
+    </p>
+    <Slider />
+  </section>
 </Layout>
 
 <style>
-  section {
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+
+  section:nth-child(2) {
     height: 100vh;
+    scroll-snap-align: start;
+  }
+
+  section:first-child {
+    min-height: 100vh;
     background-image: url("/media/images/index/01_HeroImg.webp");
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center;
+    scroll-snap-align: start;
+
+    animation: changeImage 8s infinite alternate;
+  }
+
+  @keyframes changeImage {
+    25% {
+      background-image: url("/media/images/index/01_HeroImg.webp");
+    }
+    50% {
+      background-image: url("/media/images/index/02_HeroImg.webp");
+    }
+    75% {
+      background-image: url("/media/images/index/03_HeroImg.webp");
+    }
+    100% {
+      background-image: url("/media/images/index/04_HeroImg.webp");
+    }
   }
 </style>

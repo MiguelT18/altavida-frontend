@@ -9,5 +9,11 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react"
   },
-  "extends": "astro/tsconfigs/strict"
+  "extends": "astro/tsconfigs/strict",
+  "plugins": {
+    "postcss-import": {},
+    "tailwindcss/nesting": "postcss-nesting",
+    "tailwindcss": {},
+    "autoprefixer": {},
+  }
 }
