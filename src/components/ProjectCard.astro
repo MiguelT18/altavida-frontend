@@ -10,14 +10,14 @@ const { image, title, description } = Astro.props;
 
 <a href="/desarrollos" class="block max-w-[300px] mx-auto">
   <div
-    class="h-full text-center flex flex-col items-center justify-between bg-gradient-to-t from-slate-900 to-navy-blue text-white border-orange border-2 px-4 pt-10 pb-5 rounded-xl shadow-lg shadow-gray-500"
+    class="h-full text-center flex flex-col items-center justify-between bg-gradient-to-t from-slate-900 to-navy-blue text-white border-orange border-2 px-4 pt-10 pb-5 rounded-3xl shadow-lg shadow-gray-500"
   >
     <img class="max-w-[70%] mx-auto" src={image} alt="Project Description" />
     <div class="flex flex-col items-center justify-center gap-2 py-5">
-      <h1 class="text-lg font-bold font-my-raleway">{title}</h1>
+      <h1 class="text-md font-bold font-my-raleway uppercase">{title}</h1>
       <p class="text-sm">{description}</p>
       <button
-        class="bg-orange hover:bg-[#De7700] mx-auto mt-4 py-2 px-4 block w-fit transition-all text-white text-md font-my-raleway rounded-md cursor-pointer"
+        class="bg-orange hover:bg-[#De7700] mx-auto mt-4 py-2 px-4 block w-fit transition-all text-white text-sm font-my-raleway rounded-md cursor-pointer"
       >
         Ver proyectos
       </button>

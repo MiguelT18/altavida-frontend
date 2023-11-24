@@ -1,0 +1,59 @@
+---
+import Icon from "astro-icon";
+---
+
+<section
+  class="w-full min-h-[70vh] pt-6 pb-12 grid place-content-center bg-[url('/media/images/contact_background.webp')] bg-center bg-no-repeat bg-cover bg-fixed text-white"
+>
+  <h1 class="text-white text-lg text-center font-bold uppercase">
+    Conoce nuestros desarrollos en Tarija
+  </h1>
+  <span
+    class="bg-white block mx-auto w-[40%] h-[2px] relative after:block after:w-[30%] after:h-[5px] after:mx-auto after:bg-orange mt-5 mb-5"
+  ></span>
+
+  <article
+    class="flex flex-wrap justify-center items-center gap-5 lg:gap-10 pt-5 px-4"
+  >
+    <div
+      class="mx-auto flex flex-col justify-center items-center gap-2 text-center"
+    >
+      <span class="text-sm">¿Tienes dudas? Llámanos</span>
+      <a
+        class="bg-orange hover:bg-[#De7700] w-full md:w-[340px] flex items-center justify-center gap-2 py-2 px-4 rounded-full text-sm"
+        href="tel:+591 62851111"
+      >
+        <Icon name="material-symbols:call-received-rounded" />
+         +591 62851111
+      </a>
+    </div>
+
+    <div
+      class="w-fit mx-auto flex flex-col justify-center items-center gap-2 text-center"
+    >
+      <span class="text-sm">Excríbenos</span>
+      <a
+        class="bg-orange hover:bg-[#De7700] w-full md:w-[340px] flex items-center justify-center gap-2 py-2 px-4 rounded-full text-sm"
+        href="https://wa.link/ovut67"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="whh:whatsapp" />
+         Contacto de soporte
+      </a>
+    </div>
+
+    <div
+      class="w-fit mx-auto flex flex-col justify-center items-center gap-2 text-center"
+    >
+      <span class="text-sm">¿Deseas información general?</span>
+      <a
+        class="bg-orange hover:bg-[#De7700] w-full md:w-[340px] flex items-center justify-center gap-2 py-2 px-4 rounded-full text-sm"
+        href="mailto:contacto@altavidasrl.com"
+      >
+        <Icon name="ant-design:mail-outlined" />
+         contacto@altavidasrl.com
+      </a>
+    </div>
+  </article>
+</section>

@@ -1,4 +1,5 @@
 ---
+import ContactLayout from "src/layouts/ContactLayout.astro";
 import Layout from "../layouts/Layout.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 ---
@@ -45,26 +46,28 @@ import ProjectCard from "@components/ProjectCard.astro";
           <ProjectCard
             title="Bless"
             description="Explora condominios verticales elegantes y cómodos. Más de 9 años de experiencia y 350 casas de alta calidad entregadas. Encuentra tu espacio perfecto en nuestros proyectos."
-            image="/public/media/logos/projects/Logo_Bless.webp"
+            image="/media/logos/projects/Logo_Bless.webp"
           />
         </div>
         <div class="swiper-slide">
           <ProjectCard
             title="Alta Mira"
             description="Tu hogar en el cielo. Lujo, comodidad y vistas inspiradoras se fusionan en tu nuevo refugio en las alturas."
-            image="/public/media/logos/projects/Logo_AltaMira.webp"
+            image="/media/logos/projects/Logo_AltaMira.webp"
           />
         </div>
         <div class="swiper-slide">
           <ProjectCard
             title="Río Vida"
             description="Naturaleza y comodidad en un hogar perfecto respaldado por años de experiencia en alta calidad. Tu refugio, un nuevo comienzo."
-            image="/public/media/logos/projects/Logo_RioVida.webp"
+            image="/media/logos/projects/Logo_RioVida.webp"
           />
         </div>
       </div>
     </div>
   </section>
+
+  <ContactLayout />
 </Layout>
 
 <script
@@ -73,15 +76,24 @@ import ProjectCard from "@components/ProjectCard.astro";
 <script is:inline>
   new Swiper(".swiper", {
     effect: "flip",
+    flipEffect: {
+      slideShadows: false,
+    },
     grabCursor: true,
     autoplay: {
       delay: 3000,
+      disableOnInteraction: true,
     },
     loop: true,
+    autoHeight: true,
   });
 </script>
 
 <style>
+  .swiper-wrapper {
+    padding: 50px 0;
+  }
+
   section:first-child {
     min-height: 100vh;
     background-image: url("/media/images/home/01_HeroImg.webp");
