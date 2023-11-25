@@ -91,7 +91,6 @@ import BlogViewLayout from "src/layouts/BlogViewLayout.astro";
     autoHeight: true,
   });
 </script>
-
 <style>
   .swiper-wrapper {
     padding: 40px 0 60px;
@@ -105,21 +104,26 @@ import BlogViewLayout from "src/layouts/BlogViewLayout.astro";
     background-position: center;
     scroll-snap-align: start;
 
-    animation: changeImage 8s infinite alternate;
+    /* TODO: Agregar un delay entre cada cambio de iamgen */
+    animation: changeImage 9s infinite alternate;
   }
 
   @keyframes changeImage {
-    25% {
+    0% {
       background-image: url("/media/images/pages/home/01_HeroImg.webp");
+      animation-delay: 3s;
     }
-    50% {
+    33% {
       background-image: url("/media/images/pages/home/02_HeroImg.webp");
+      animation-delay: 3s;
     }
-    75% {
+    66% {
       background-image: url("/media/images/pages/home/03_HeroImg.webp");
+      animation-delay: 3s;
     }
     100% {
       background-image: url("/media/images/pages/home/04_HeroImg.webp");
+      animation-delay: 3s;
     }
   }
 </style>

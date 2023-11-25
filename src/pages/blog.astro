@@ -2,17 +2,20 @@
 import Header from "@components/Header.astro";
 import Layout from "../layouts/Layout.astro";
 import MainSection from "@components/MainSection.astro";
+import ContactLayout from "src/layouts/ContactLayout.astro";
 ---
 
 <Layout title="AltaVida - Blog 📣">
-	<Header title="Blog" subtitle="Ponte al día con las últimas noticias" />
-	<MainSection>
-		<h1 class="text-lg text-center font-bold uppercase">Blog 📝</h1>
-		<p class="text-sm text-center max-w-[600px] mx-auto">
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam quibusdam
-			sit quia nostrum earum ea tempore dolorem. Distinctio totam non
-			consequuntur voluptate officia adipisci magnam, sed, aperiam, ullam natus
-			quibusdam!
-		</p>
-	</MainSection>
+  <Header title="Blog" subtitle="Ponte al día con las últimas noticias" />
+  <MainSection>
+    <h1 class="text-lg text-center font-bold uppercase">Blog 📝</h1>
+    <p class="text-sm text-center max-w-[600px] mx-auto">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam quibusdam
+      sit quia nostrum earum ea tempore dolorem. Distinctio totam non
+      consequuntur voluptate officia adipisci magnam, sed, aperiam, ullam natus
+      quibusdam!
+    </p>
+  </MainSection>
+
+  <ContactLayout />
 </Layout>

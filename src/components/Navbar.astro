@@ -18,12 +18,12 @@ import HamburgerMenu from "public/media/icons/HamburgerMenu.astro";
     <ul
       class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2"
     >
-      <li><a href="/desarrollos">Desarrollos</a></li>
-      <li><a href="/catalogo">Catálogo</a></li>
-      <li><a href="/financiamiento">Financiamiento</a></li>
-      <li><a href="/nosotros">Nosotros</a></li>
-      <li><a href="/testimoniales">Testimonios</a></li>
-      <li><a href="/blog">Blog</a></li>
+      <li><a id="item" href="/desarrollos">Desarrollos</a></li>
+      <li><a id="item" href="/catalogo">Catálogo</a></li>
+      <li><a id="item" href="/financiamiento">Financiamiento</a></li>
+      <li><a id="item" href="/nosotros">Nosotros</a></li>
+      <li><a id="item" href="/testimoniales">Testimonios</a></li>
+      <li><a id="item" href="/blog">Blog</a></li>
     </ul>
   </div>
 </nav>
@@ -41,12 +41,20 @@ import HamburgerMenu from "public/media/icons/HamburgerMenu.astro";
 >
 </div>
 
-<!-- <script>
-  if (window.location.pathname !== "/") {
-    const headerEl = document.querySelector("#landing-header") as HTMLElement;
-    headerEl.style.position = "sticky";
+<style>
+  .itemSelected {
+    color: #f9a826;
   }
-</script> -->
+</style>
+
+<script>
+  const item = document.querySelectorAll("#item");
+  item.forEach((item) => {
+    if (item.getAttribute("href") === window.location.pathname) {
+      item.classList.add("itemSelected");
+    }
+  });
+</script>
 
 <script>
   const listItem = document.querySelectorAll("#landing-header li");
