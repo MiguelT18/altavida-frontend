@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<section class="bg-navy-blue text-white pt-10 pb-20">
+	<div>
+		<h1 class="text-white text-lg text-center font-bold uppercase">Blog</h1>
+		<span
+			class="bg-white block mx-auto w-[60%] max-w-[500px] h-[2px] relative after:block after:w-[30%] after:h-[5px] after:mx-auto after:bg-orange mb-6 mt-3"
+		></span>
+		<p class="text-sm text-center">Entérate de nuestras últimas noticias</p>
+	</div>
+
+	<article
+		class="pt-8 flex max-md:flex-col-reverse justify-center items-center mx-8"
+	>
+		<div
+			class="bg-white text-dark-gray w-full max-w-[520px] h-fit p-12 pr-28 max-md:p-10 max-sm:p-6 max-sm:pt-20 max-md:pt-20 max-md:text-center"
+		>
+			<h2 class="text-lg text-black font-bold mb-3">
+				Ahorra energía en casa con estos tips y bájale a tu recibo de luz
+			</h2>
+			<p class="text-sm text-dark mb-6">
+				Descubre cómo ahorrar energía en casa y reducir tus gastos mensuales.
+				Con consejos prácticos y efectivos, aprenderás a cuidar el medio
+				ambiente mientras ahorras dinero.
+			</p>
+			<div class="text-sm flex items-center w-full justify-between">
+				<a
+					href="/blog"
+					class="bg-orange hover:bg-[#De7700] py-2 max-lg:px-2 px-4 block w-fit transition-all text-white text-sm font-bold rounded-md"
+				>
+					Ver noticia
+				</a>
+				<span class="flex items-center gap-2 text-dark font-bold">
+					<Icon
+						name="ic:baseline-remove-red-eye"
+						class="text-black transition-colors w-[25px]"
+					/>
+					 3240
+				</span>
+			</div>
+		</div>
+
+		<img
+			class="w-[40%] max-md:w-[80%] max-w-[420px] max-md:mx-auto h-full -ml-16 max-md:-mb-14 z-20"
+			src="/media/images/layouts/FocoPicture.webp"
+			alt="Entérate de nuestras últimas noticias en nuestro blog"
+		/>
+	</article>
+</section>
