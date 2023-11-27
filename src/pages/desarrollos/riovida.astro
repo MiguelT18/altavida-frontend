@@ -1,0 +1,33 @@
+---
+import Header from "@components/Header.astro";
+import MainSection from "@components/MainSection.astro";
+import Navbar from "@components/Navbar.astro";
+import ContactLayout from "src/layouts/ContactLayout.astro";
+import Layout from "src/layouts/Layout.astro";
+import { Icon } from "astro-icon";
+---
+
+<Layout title="Desarrollo - Bless">
+	<Header>
+		<a
+			href="/desarrollos"
+			class="text-sm flex items-center gap-2 hover:text-orange hover:underline"
+		>
+			<Icon
+				name="material-symbols:keyboard-backspace"
+				class="text-white w-[25px]"
+			/>
+			<span>Atrás</span>
+		</a>
+	</Header>
+	<MainSection>
+		<h1 class="text-lg text-center font-bold text-black">Río Vida</h1>
+		<p class="text-sm text-center text-dark max-w-[600px] mx-auto">
+			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quas
+			sapiente dicta dolorem rem aliquid excepturi repudiandae, id veniam
+			quisquam fugiat voluptatem vitae repellat quasi ab corporis adipisci hic
+			suscipit?
+		</p>
+	</MainSection>
+	<ContactLayout />
+</Layout>

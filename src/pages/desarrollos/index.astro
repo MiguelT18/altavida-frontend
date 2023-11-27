@@ -1,0 +1,135 @@
+---
+import Header from "@components/Header.astro";
+import Layout from "../../layouts/Layout.astro";
+import MainSection from "@components/MainSection.astro";
+import ContactLayout from "src/layouts/ContactLayout.astro";
+---
+
+<Layout title="AltaVida - Desarrollos 🔨">
+  <Header title="Desarrollos" subtitle="Explora a fondo nuestros proyectos" />
+
+  <MainSection>
+    <div class="max-w-[700px] mx-auto mb-8">
+      <p class="text-sm text-center">
+        Descubre la excelencia de AltaVida en proyectos que abarcan desde lujo
+        con <strong>Bless</strong> hasta versatilidad con
+        <strong> Río Vida</strong> y confiabilidad con
+        <strong> Altamira</strong>. Nuestra experiencia de nueve años, más de
+        350 casas construidas y servicios de intermediación financiera nos
+        distinguen. Explora nuestras opciones con un compromiso inquebrantable
+        con la excelencia, versatilidad e integridad.
+      </p>
+    </div>
+
+    <div class="imageButton_container">
+      <a class="relative flex justify-center" href="/desarrollos/altamira">
+        <img
+          class="max-w-[400px] h-full"
+          src="/media/images/pages/desarrollos/altaMira/render.png"
+          alt="Alta Mira render button"
+        />
+        <div
+          class="absolute bottom-10 text-white font-bold z-10 uppercase text-center pb-2"
+        >
+          <h4 class="mb-3">Alta Mira</h4>
+          <img
+            class="max-w-[50px]"
+            src="/media/logos/projects/Logo_AltaMira.webp"
+            alt="Alta Mira Logotipo"
+          />
+        </div>
+      </a>
+      <a class="relative flex justify-center" href="/desarrollos/bless">
+        <img
+          class="max-w-[400px]"
+          src="/media/images/pages/desarrollos/bless/bless_portada.jpg"
+          alt="Río Vida render button"
+        />
+        <div
+          class="absolute bottom-10 text-white font-bold z-10 uppercase text-center pb-2"
+        >
+          <h4 class="mb-3">Bless</h4>
+          <img
+            class="max-w-[60px]"
+            src="/media/logos/projects/Logo_Bless.webp"
+            alt="Bless Logotipo"
+          />
+        </div>
+      </a>
+      <a class="relative flex justify-center" href="/desarrollos/riovida">
+        <img
+          class="max-w-[400px] h-full"
+          src="/media/images/pages/desarrollos/rioVida_portada/rioVida_portada.png"
+          alt="Bless render button"
+        />
+        <div
+          class="absolute bottom-10 text-white font-bold z-10 uppercase text-center pb-2"
+        >
+          <h4 class="mb-3">Río Vida</h4>
+          <img
+            class="max-w-[60px]"
+            src="/media/logos/projects/Logo_RioVida.webp"
+            alt="Alta Mira Logotipo"
+          />
+        </div>
+      </a>
+    </div>
+  </MainSection>
+
+  <ContactLayout />
+</Layout>
+
+<style>
+  .imageButton_container {
+    max-width: 680px;
+    margin: 0 auto;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .imageButton_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .imageButton_container a {
+    position: relative;
+    box-shadow: 0 8px 11px rgba(0, 0, 0, 0.2);
+    transition:
+      transform 0.3s ease-out,
+      box-shadow 0.2s linear;
+  }
+  .imageButton_container a:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 11px rgba(255, 220, 0, 0.2);
+  }
+  .imageButton_container a::before {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    content: "";
+    display: block;
+    z-index: 2;
+    border: 1px solid #fff;
+    opacity: 0.4;
+  }
+  .imageButton_container a::after {
+    content: "";
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(81, 165, 194, 0) 100%
+    );
+  }
+  .imageButton_container a:nth-child(2) {
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+</style>

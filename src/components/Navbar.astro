@@ -31,7 +31,7 @@ import HamburgerMenu from "public/media/icons/HamburgerMenu.astro";
 <div
   id="menu-backdrop"
   class={`
-      absolute bg-white/30 backdrop-blur-sm rounded-lg
+      absolute bg-white/30 border-2 border-white backdrop-blur-sm rounded-lg
       translate-x-[var(--left)] translate-y-[var(--top)]
       left-0 top-0
       w-[var(--width)] h-[var(--height)]
@@ -43,7 +43,9 @@ import HamburgerMenu from "public/media/icons/HamburgerMenu.astro";
 
 <style>
   .itemSelected {
-    color: #f9a826;
+    color: #ff8900;
+    border: 2px solid #ff8900;
+    border-radius: 8px;
   }
 </style>
 
