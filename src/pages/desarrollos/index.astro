@@ -24,14 +24,15 @@ import ContactLayout from "src/layouts/ContactLayout.astro";
     <div class="imageButton_container">
       <a class="relative flex justify-center" href="/desarrollos/altamira">
         <img
+          transition:name="altamira-image"
           class="max-w-[400px] h-full"
-          src="/media/images/pages/desarrollos/altaMira/render.png"
+          src="/media/images/pages/desarrollos/altaMira/renderCard.png"
           alt="Alta Mira render button"
         />
         <div
           class="absolute bottom-10 text-white font-bold z-10 uppercase text-center pb-2"
         >
-          <h4 class="mb-3">Alta Mira</h4>
+          <h4 transition:name="altamira-title" class="mb-3">Alta Mira</h4>
           <img
             class="max-w-[50px]"
             src="/media/logos/projects/Logo_AltaMira.webp"
@@ -39,16 +40,18 @@ import ContactLayout from "src/layouts/ContactLayout.astro";
           />
         </div>
       </a>
+
       <a class="relative flex justify-center" href="/desarrollos/bless">
         <img
+          transition:name="bless-image"
           class="max-w-[400px]"
           src="/media/images/pages/desarrollos/bless/bless_portada.jpg"
-          alt="Río Vida render button"
+          alt="Bless render button"
         />
         <div
           class="absolute bottom-10 text-white font-bold z-10 uppercase text-center pb-2"
         >
-          <h4 class="mb-3">Bless</h4>
+          <h4 transition:name="bless-title" class="mb-3">Bless</h4>
           <img
             class="max-w-[60px]"
             src="/media/logos/projects/Logo_Bless.webp"
@@ -56,16 +59,18 @@ import ContactLayout from "src/layouts/ContactLayout.astro";
           />
         </div>
       </a>
+
       <a class="relative flex justify-center" href="/desarrollos/riovida">
         <img
+          transition:name="riovida-image"
           class="max-w-[400px] h-full"
-          src="/media/images/pages/desarrollos/rioVida_portada/rioVida_portada.png"
-          alt="Bless render button"
+          src="/media/images/pages/desarrollos/rioVida/rioVida_portada.png"
+          alt="RioVida render button"
         />
         <div
           class="absolute bottom-10 text-white font-bold z-10 uppercase text-center pb-2"
         >
-          <h4 class="mb-3">Río Vida</h4>
+          <h4 transition:name="riovida-name" class="mb-3">Río Vida</h4>
           <img
             class="max-w-[60px]"
             src="/media/logos/projects/Logo_RioVida.webp"
@@ -96,13 +101,10 @@ import ContactLayout from "src/layouts/ContactLayout.astro";
   .imageButton_container a {
     position: relative;
     box-shadow: 0 8px 11px rgba(0, 0, 0, 0.2);
-    transition:
-      transform 0.3s ease-out,
-      box-shadow 0.2s linear;
+    transition: transform 0.3s ease-out;
   }
   .imageButton_container a:hover {
     transform: scale(1.03);
-    box-shadow: 0 8px 11px rgba(255, 220, 0, 0.2);
   }
   .imageButton_container a::before {
     position: absolute;

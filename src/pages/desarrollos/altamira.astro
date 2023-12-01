@@ -1,33 +1,146 @@
 ---
 import Header from "@components/Header.astro";
 import MainSection from "@components/MainSection.astro";
-import Navbar from "@components/Navbar.astro";
 import ContactLayout from "src/layouts/ContactLayout.astro";
 import Layout from "src/layouts/Layout.astro";
-import { Icon } from "astro-icon";
+import Previous from "public/media/icons/Previous.astro";
+import PhoneContact from "public/media/icons/PhoneContact.astro";
+
+const SliderImages: Array<string> = [
+	"/media/images/pages/desarrollos/altaMira/render2.png",
+	"/media/images/pages/desarrollos/altaMira/render4.png",
+	"/media/images/pages/desarrollos/altaMira/render5.png",
+	"/media/images/pages/desarrollos/altaMira/render6.png",
+	"/media/images/pages/desarrollos/altaMira/render3.png",
+	"/media/images/pages/desarrollos/altaMira/render7.png",
+	"/media/images/pages/desarrollos/altaMira/render1.png",
+];
+
+function shuffleArray(array: Array<string>) {
+	for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[array[i], array[j]] = [array[j], array[i]];
+	}
+	return array;
+}
+
+const shuffledImages = shuffleArray(SliderImages);
 ---
 
-<Layout title="Desarrollo - AltaMira">
-	<Header>
+<Layout title="Desarrollo - Alta Mira">
+	<Header
+		backgroundImage="/media/images/pages/desarrollos/altaMira/renderHeader.png"
+	>
 		<a
 			href="/desarrollos"
-			class="text-sm flex items-center gap-2 hover:text-orange hover:underline"
+			class="text-sm flex items-center gap-2 hover:text-orange transition-all"
 		>
-			<Icon
-				name="material-symbols:keyboard-backspace"
-				class="text-white w-[25px]"
-			/>
+			<Previous />
 			<span>Atrás</span>
 		</a>
 	</Header>
 	<MainSection>
-		<h1 class="text-lg text-center font-bold text-black">Alta Mira</h1>
-		<p class="text-sm text-center text-dark max-w-[600px] mx-auto">
-			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quas
-			sapiente dicta dolorem rem aliquid excepturi repudiandae, id veniam
-			quisquam fugiat voluptatem vitae repellat quasi ab corporis adipisci hic
-			suscipit?
-		</p>
+		<article
+			class="flex max-lg:flex-col justify-center items-center max-w-[900px] mx-auto px-12 gap-10"
+		>
+			<figure class="max-lg:text-center">
+				<h1
+					transition:name="altamira-title"
+					class="text-lg font-bold text-black uppercase"
+				>
+					Alta Mira
+				</h1>
+
+				<p class="text-sm text-dark mt-3">
+					En Alta Mira, fusionamos elegancia y comodidad para ofrecerte un
+					estilo de vida excepcional. Nuestra amplia gama de propiedades,
+					respaldada por la reputación de AltaVida con más de nueve años de
+					experiencia, te brinda la libertad de encontrar tu hogar perfecto.
+				</p>
+				<a
+					class="flex gap-3 items-center bg-orange hover:bg-[#De7700] transition-all mt-5 rounded-full w-fit text-white px-5 py-2 max-lg:mx-auto"
+					href="https://wa.link/ovut67"
+				>
+					<span class="text-sm">Contacto</span>
+					<PhoneContact />
+				</a>
+			</figure>
+			<img
+				src="/media/images/pages/desarrollos/altaMira/render1.png"
+				transition:name="altamira-image"
+				alt="Alta Mira Render"
+				class="w-full max-w-[380px] max-lg:max-w-[600px] h-full mx-auto"
+			/>
+		</article>
+
+		<div class="mx-auto mt-5">
+			<h1 class="text-lg uppercase font-bold text-center py-5">
+				Explora nuestra galería
+			</h1>
+			<div class="altamiraImageGallery">
+				{
+					shuffledImages.map((image, index) => (
+						<figure id="altamira-image-card">
+							<img
+								class="w-full max-w-[1080px]"
+								src={image}
+								alt={`Image: #${index}`}
+							/>
+						</figure>
+					))
+				}
+			</div>
+		</div>
 	</MainSection>
+
 	<ContactLayout />
 </Layout>
+
+<script>
+	document.addEventListener("astro:page-load", () => {
+		const image = document.querySelectorAll("#altamira-image-card");
+		image.forEach((image) => {
+			image.addEventListener("click", () => {
+				image.classList.toggle("active");
+				document.body.style.overflow = image.classList.contains("active")
+					? "hidden"
+					: "auto";
+			});
+		});
+	});
+</script>
+
+<style>
+	.altamiraImageGallery figure.active {
+		position: fixed;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		top: 50%;
+		left: 50%;
+		transition: background 0.3s ease;
+		transform: translate(-50%, -50%);
+		background: rgba(0, 0, 0, 0.75);
+		width: 100vw;
+		height: 100vh;
+		z-index: 100;
+	}
+	.altamiraImageGallery {
+		display: grid;
+		gap: 5px;
+		justify-items: center;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	.altamiraImageGallery figure {
+		position: relative;
+		box-shadow: 0 8px 11px rgba(0, 0, 0, 0.2);
+		transition: transform 0.3s ease-out;
+		cursor: pointer;
+	}
+	.altamiraImageGallery figure:not(.active):hover {
+		transform: scale(1.03);
+	}
+</style>

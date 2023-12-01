@@ -36,7 +36,7 @@ import HamburgerMenu from "public/media/icons/HamburgerMenu.astro";
       left-0 top-0
       w-[var(--width)] h-[var(--height)]
       transition-all duration-500
-      ease-in-out opacity-0 z-10
+      ease-in-out opacity-0 z-30
     `}
 >
 </div>
@@ -50,57 +50,66 @@ import HamburgerMenu from "public/media/icons/HamburgerMenu.astro";
 </style>
 
 <script>
-  const item = document.querySelectorAll("#item");
-  item.forEach((item) => {
-    if (item.getAttribute("href") === window.location.pathname) {
-      item.classList.add("itemSelected");
-    }
-  });
-</script>
+  document.addEventListener("astro:page-load", () => {
+    const item = document.querySelectorAll("#item");
 
-<script>
-  const listItem = document.querySelectorAll("#landing-header li");
-  const menuBackDrop = document.querySelector("#menu-backdrop") as HTMLElement;
-
-  listItem.forEach((item) => {
-    item.addEventListener("mouseenter", () => {
-      const { left, top, width, height } = item.getBoundingClientRect();
-
-      menuBackDrop.style.setProperty("--left", `${left}px`);
-      menuBackDrop.style.setProperty("--top", `${top}px`);
-      menuBackDrop.style.setProperty("--width", `${width}px`);
-      menuBackDrop.style.setProperty("--height", `${height}px`);
-
-      menuBackDrop.style.opacity = "1";
-      menuBackDrop.style.visibility = "visible";
-    });
-
-    item.addEventListener("mouseleave", () => {
-      menuBackDrop.style.opacity = "0";
-      menuBackDrop.style.visibility = "hidden";
-    });
-  });
-</script>
-
-<script>
-  const headerEl = document.querySelector("#landing-header") as HTMLElement;
-
-  const observerOptions = {
-    root: null,
-    rootMargin: "0px", // en cuanto se vea el elemento
-    threshold: 0.9, // porcentaje de visibilidad
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const { isIntersecting } = entry;
-      if (isIntersecting) {
-        const color = entry.target.getAttribute("data-header-color");
-        headerEl.style.color = color ?? "";
+    item.forEach((item) => {
+      if (window.location.pathname.includes(item.getAttribute("href") ?? "")) {
+        item.classList.add("itemSelected");
       }
     });
-  }, observerOptions);
+  });
+</script>
 
-  const sectionElements = document.querySelectorAll(".landing-section");
-  sectionElements.forEach((section) => observer.observe(section));
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const listItem = document.querySelectorAll("#landing-header li");
+    const menuBackDrop = document.querySelector(
+      "#menu-backdrop",
+    ) as HTMLElement;
+
+    listItem.forEach((item) => {
+      item.addEventListener("mouseenter", () => {
+        const { left, top, width, height } = item.getBoundingClientRect();
+
+        menuBackDrop.style.setProperty("--left", `${left}px`);
+        menuBackDrop.style.setProperty("--top", `${top}px`);
+        menuBackDrop.style.setProperty("--width", `${width}px`);
+        menuBackDrop.style.setProperty("--height", `${height}px`);
+
+        menuBackDrop.style.opacity = "1";
+        menuBackDrop.style.visibility = "visible";
+      });
+
+      item.addEventListener("mouseleave", () => {
+        menuBackDrop.style.opacity = "0";
+        menuBackDrop.style.visibility = "hidden";
+      });
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const headerEl = document.querySelector("#landing-header") as HTMLElement;
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px", // en cuanto se vea el elemento
+      threshold: 0.9, // porcentaje de visibilidad
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const { isIntersecting } = entry;
+        if (isIntersecting) {
+          const color = entry.target.getAttribute("data-header-color");
+          headerEl.style.color = color ?? "";
+        }
+      });
+    }, observerOptions);
+
+    const sectionElements = document.querySelectorAll(".landing-section");
+    sectionElements.forEach((section) => observer.observe(section));
+  });
 </script>

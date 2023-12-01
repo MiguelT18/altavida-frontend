@@ -1,0 +1,64 @@
+---
+import Header from "@components/Header.astro";
+import Layout from "../../layouts/Layout.astro";
+import MainSection from "@components/MainSection.astro";
+import ContactLayout from "src/layouts/ContactLayout.astro";
+
+const Modelos = {
+  names: [
+    "Modelo Brick",
+    "Modelo Canela",
+    "Modelo Minimalista",
+    "Modelo Mediterraneo",
+    "Modelo Dalia",
+    "Modelo Elite",
+    "Modelo Country",
+    "Modelo Campestre",
+    "Modelo Petra",
+    "Modelo Clásico",
+  ],
+  src: [
+    "/media/images/pages/catalogo/1_brick.webp",
+    "/media/images/pages/catalogo/2_canela.webp",
+    "/media/images/pages/catalogo/3_minimalista.webp",
+    "/media/images/pages/catalogo/4_mediterraneo.webp",
+    "/media/images/pages/catalogo/5_dalia.webp",
+    "/media/images/pages/catalogo/6_elite.webp",
+    "/media/images/pages/catalogo/7_country.webp",
+    "/media/images/pages/catalogo/8_campestre.webp",
+    "/media/images/pages/catalogo/9_petra.webp",
+    "/media/images/pages/catalogo/10_clasico.webp",
+  ],
+};
+---
+
+<Layout title="AltaVida - Catálogo 📦">
+  <Header
+    title="Catálogo"
+    subtitle="Explora a fondo nuestros modelos de construcción"
+  />
+  <MainSection>
+    <h1 class="text-center text-lg font-bold font-my-raleway pb-6 uppercase">
+      Modelos de Construcción
+    </h1>
+
+    <div class="flex flex-wrap justify-center gap-14">
+      {
+        Modelos.src.map((modelo, index) => (
+          <div class="w-fit border-orange text-dark-gray backdrop-blur-3xl bg-slate-100 bg-opacity-60 max-w-[300px] min-h-[100px] p-5 rounded-xl shadow-md shadow-gray-200">
+            <h1 class="text-sm text-center pb-2 uppercase text-dark-gray">
+              {Modelos.names[index]}
+            </h1>
+            <img
+              class="w-full max-w-[300px] mx-auto"
+              src={modelo}
+              alt={`${Modelos.names[index]}`}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </MainSection>
+
+  <ContactLayout />
+</Layout>

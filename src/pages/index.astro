@@ -73,9 +73,6 @@ import BlogViewLayout from "src/layouts/BlogViewLayout.astro";
   <ContactLayout />
 </Layout>
 
-<script
-  is:inline
-  src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script is:inline>
   new Swiper(".swiper", {
     effect: "flip",
@@ -91,6 +88,7 @@ import BlogViewLayout from "src/layouts/BlogViewLayout.astro";
     autoHeight: true,
   });
 </script>
+
 <style>
   .swiper-wrapper {
     padding: 40px 0 60px;
@@ -104,7 +102,7 @@ import BlogViewLayout from "src/layouts/BlogViewLayout.astro";
     background-position: center;
     scroll-snap-align: start;
 
-    /* TODO: Agregar un delay entre cada cambio de iamgen */
+    /* TODO: Agregar un delay entre cada cambio de imagen */
     animation: changeImage 9s infinite alternate;
   }
 

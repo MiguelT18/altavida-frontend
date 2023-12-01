@@ -5,6 +5,12 @@
       "@components/*": [
         "src/components/*"
       ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "@layout/*": [
+        "src/layouts/*"
+      ],
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"

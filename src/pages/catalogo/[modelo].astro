@@ -1,0 +1,24 @@
+---
+import MainSection from "@components/MainSection.astro";
+import Layout from "@layouts/Layout.astro";
+
+export function getStaticPaths() {
+	return [
+		{
+			params: { 'brick'}
+		}
+	]
+}
+---
+
+<Layout>
+	<MainSection>
+		<h1>Hola</h1>
+		<p>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae et
+			commodi magnam delectus corrupti accusamus nesciunt impedit. Facilis qui
+			quaerat repudiandae quisquam, veniam commodi modi cum sapiente tempora ad
+			eum.
+		</p>
+	</MainSection>
+</Layout>

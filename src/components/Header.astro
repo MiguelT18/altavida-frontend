@@ -2,8 +2,8 @@
 import { Icon } from "astro-icon";
 
 interface HeaderProps {
-  title: string;
-  subtitle: string;
+  title?: string;
+  subtitle?: string;
   backgroundImage: string;
 }
 
@@ -16,13 +16,13 @@ const backgroundStyle = isImageUrl
 
 <header
   class="text-white flex flex-col items-center justify-end w-full pt-[25vh] pb-28 relative"
-  style=`background: ${backgroundStyle}`
+  style={`background: ${backgroundStyle}; background-size: cover; background-position: cover; background-repeat: no-repeat;`}
 >
   <div class="flex items-center justify-center gap-10">
     <slot />
     <a
       href="/"
-      class="flex items-center gap-2 hover:bg-white hover:bg-opacity-25 hover:border-white transition-all px-6 py-2 my-4 rounded-md text-sm border-2 border-gray-500"
+      class="flex items-center gap-2 hover:bg-white hover:bg-opacity-25 hover:border-white transition-all px-6 py-2 my-4 rounded-md text-sm border-2 border-gray-300"
     >
       <Icon name="ph:house-simple-duotone" class="text-white w-[25px]" />
       <span>Inicio</span>
@@ -35,5 +35,3 @@ const backgroundStyle = isImageUrl
     <p class="text-sm text-center">{subtitle}</p>
   </div>
 </header>
-
-<script></script>

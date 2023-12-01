@@ -3,6 +3,27 @@ import Header from "@components/Header.astro";
 import Layout from "../layouts/Layout.astro";
 import MainSection from "@components/MainSection.astro";
 import ContactLayout from "src/layouts/ContactLayout.astro";
+
+const Creditos = {
+  names: [
+    "Banco Mercantil",
+    "Banco de Crédito (BCP)",
+    "Banco Bisa",
+    "Banco BNB",
+    "Banco Economico",
+    "La primera EFV",
+    "Banco Ganadero",
+  ],
+  src: [
+    "/media/images/pages/financiamiento/creditos/banco_mercantil.png",
+    "/media/images/pages/financiamiento/creditos/banco_bcp.png",
+    "/media/images/pages/financiamiento/creditos/banco_bisa.png",
+    "/media/images/pages/financiamiento/creditos/banco_bnb.jpg",
+    "/media/images/pages/financiamiento/creditos/banco_economico.jpg",
+    "/media/images/pages/financiamiento/creditos/banco_efv.png",
+    "/media/images/pages/financiamiento/creditos/banco_ganadero.png",
+  ],
+};
 ---
 
 <Layout title="AltaVida - Financiamiento 💵">
@@ -12,13 +33,37 @@ import ContactLayout from "src/layouts/ContactLayout.astro";
     subtitle="Asesoría personalizada y gratuita"
   />
   <MainSection>
-    <h1 class="text-lg text-center font-bold uppercase">Financiamiento 💵</h1>
-    <p class="text-sm text-center max-w-[600px] mx-auto">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam quibusdam
-      sit quia nostrum earum ea tempore dolorem. Distinctio totam non
-      consequuntur voluptate officia adipisci magnam, sed, aperiam, ullam natus
-      quibusdam!
+    <p class="text-sm text-dark-gray mb-8">
+      Porque AltaVida piensa en tí, te ofrecemos increíbles facilidades al
+      momento de comprar tu casa o departamento, queremos que formes parte de
+      nuestra gran familia.
+      <br />
+      <br />
+       Por eso, te asesoramos para que elijas tu crédito de vivienda social, con
+      la entidad bancaria que mejor se adapte a tus necesidades.
+      <br />
+      <br />
+       Estás a tiempo para escoger tu hogar con nosotros.
     </p>
+
+    <div
+      class="max-w-[900px] mx-auto flex flex-wrap items-stretch gap-10 justify-center"
+    >
+      {
+        Creditos.names.map((name, index) => (
+          <div class="border-orange text-dark-gray backdrop-blur-3xl bg-slate-100 bg-opacity-60 max-w-[200px] min-h-[100px] p-5 rounded-xl shadow-md shadow-gray-200">
+            <img
+              class={`${
+                index === 5 ? "bg-[#002669] py-6 px-2" : ""
+              } rounded-md`}
+              src={Creditos.src[index]}
+              alt="Credit info"
+            />
+            <h1 class="text-center text-sm font-my-raleway pt-4">{name}</h1>
+          </div>
+        ))
+      }
+    </div>
   </MainSection>
 
   <ContactLayout />
