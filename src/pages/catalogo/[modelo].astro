@@ -1,24 +1,33 @@
 ---
+import Header from "@components/Header.astro";
 import MainSection from "@components/MainSection.astro";
-import Layout from "@layouts/Layout.astro";
+import Layout from "@layout/Layout.astro";
+import Previous from "public/media/icons/Previous.astro";
+import { Modelos } from "@lib/data.ts";
 
 export function getStaticPaths() {
-	return [
-		{
-			params: { 'brick'}
-		}
-	]
+	const data = Modelos.paths;
+
+	return data.map((modelo) => ({
+		params: { modelo },
+	}));
 }
+
+const { modelo } = Astro.params;
 ---
 
-<Layout>
+<Layout title={`Modelo ${modelo}`}>
+	<Header>
+		<a
+			href="/catalogo"
+			class="text-sm flex items-center gap-2 hover:text-orange transition-all"
+		>
+			<Previous />
+			<span>Atrás</span>
+		</a>
+	</Header>
 	<MainSection>
-		<h1>Hola</h1>
-		<p>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae et
-			commodi magnam delectus corrupti accusamus nesciunt impedit. Facilis qui
-			quaerat repudiandae quisquam, veniam commodi modi cum sapiente tempora ad
-			eum.
-		</p>
+		<h1 class="text-lg uppercase font-bold text-center">Hello from {modelo}</h1>
 	</MainSection>
 </Layout>
+ @lib/catalogoData
