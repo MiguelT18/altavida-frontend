@@ -33,36 +33,39 @@ const Creditos = {
     subtitle="Asesoría personalizada y gratuita"
   />
   <MainSection>
-    <p class="text-sm text-dark-gray mb-8">
-      Porque AltaVida piensa en tí, te ofrecemos increíbles facilidades al
-      momento de comprar tu casa o departamento, queremos que formes parte de
-      nuestra gran familia.
-      <br />
-      <br />
-       Por eso, te asesoramos para que elijas tu crédito de vivienda social, con
-      la entidad bancaria que mejor se adapte a tus necesidades.
-      <br />
-      <br />
-       Estás a tiempo para escoger tu hogar con nosotros.
-    </p>
+    <div class="max-w-[800px] mx-auto">
+      <p class="text-sm text-dark mb-8">
+        Porque AltaVida piensa en tí, te ofrecemos increíbles facilidades al
+        momento de comprar tu casa o departamento, queremos que formes parte de
+        nuestra gran familia.
+        <br />
+        <br />
+         Por eso, te asesoramos para que elijas tu crédito de vivienda social,
+        con la entidad bancaria que mejor se adapte a tus necesidades.
+        <br />
+        <br />
+         Estás a tiempo para escoger tu hogar con nosotros.
+        <br />
+        <br />
+        <strong>Conoce los diferentes tipos de créditos que aceptamos:</strong>
+      </p>
 
-    <div
-      class="max-w-[900px] mx-auto flex flex-wrap items-stretch gap-10 justify-center"
-    >
-      {
-        Creditos.names.map((name, index) => (
-          <div class="border-orange text-dark-gray backdrop-blur-3xl bg-slate-100 bg-opacity-60 max-w-[200px] min-h-[100px] p-5 rounded-xl shadow-md shadow-gray-200">
-            <img
-              class={`${
-                index === 5 ? "bg-[#002669] py-6 px-2" : ""
-              } rounded-md`}
-              src={Creditos.src[index]}
-              alt="Credit info"
-            />
-            <h1 class="text-center text-sm font-my-raleway pt-4">{name}</h1>
-          </div>
-        ))
-      }
+      <div class="creditosContainer">
+        {
+          Creditos.names.map((name, index) => (
+            <div class="border-orange text-dark-gray backdrop-blur-3xl bg-slate-100 bg-opacity-60 max-w-[200px] min-h-[100px] p-5 rounded-xl shadow-md shadow-gray-200">
+              <img
+                class={`${
+                  index === 5 ? "bg-[#002669] py-6 px-2" : ""
+                } rounded-md`}
+                src={Creditos.src[index]}
+                alt="Credit info"
+              />
+              <h1 class="text-center text-sm font-my-raleway pt-4">{name}</h1>
+            </div>
+          ))
+        }
+      </div>
     </div>
   </MainSection>
 

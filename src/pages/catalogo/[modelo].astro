@@ -3,20 +3,24 @@ import Header from "@components/Header.astro";
 import MainSection from "@components/MainSection.astro";
 import Layout from "@layout/Layout.astro";
 import Previous from "public/media/icons/Previous.astro";
-import { Modelos } from "@lib/data.ts";
+import { Modelos } from "@lib/catalogoData.ts";
+import PhoneContact from "public/media/icons/PhoneContact.astro";
 
 export function getStaticPaths() {
-	const data = Modelos.paths;
-
-	return data.map((modelo) => ({
-		params: { modelo },
-	}));
+	return Modelos.map((modelo) => {
+		return {
+			params: {
+				modelo: modelo.path,
+			},
+		};
+	});
 }
 
 const { modelo } = Astro.params;
+const modeloCapitalized = modelo.charAt(0).toUpperCase() + modelo.slice(1);
 ---
 
-<Layout title={`Modelo ${modelo}`}>
+<Layout title={`Modelo ${modeloCapitalized}`}>
 	<Header>
 		<a
 			href="/catalogo"
@@ -26,8 +30,33 @@ const { modelo } = Astro.params;
 			<span>Atrás</span>
 		</a>
 	</Header>
+
 	<MainSection>
-		<h1 class="text-lg uppercase font-bold text-center">Hello from {modelo}</h1>
+		<div class="flex justify-around">
+			<div class="max-w-[520px]">
+				<h1 class="text-lg uppercase font-bold">
+					Modelo {modeloCapitalized}
+				</h1>
+				<p class="text-sm mt-4">
+					{Modelos.find((m) => m.path === (modelo as string))?.description}
+				</p>
+				<a
+					class="flex gap-3 items-center bg-orange hover:bg-[#De7700] transition-all mt-5 rounded-lg w-fit text-white px-5 py-2 max-lg:mx-auto"
+					href="https://wa.link/ovut67"
+				>
+					<span class="text-sm">Contacto</span>
+					<PhoneContact />
+				</a>
+			</div>
+
+			<div>
+				<img
+					transition:name={`${modelo}-image`}
+					class="w-full max-w-[600px] h-full"
+					src={`/media/images/pages/catalogo/${modelo}1.webp`}
+					alt={`Modelo ${modeloCapitalized}`}
+				/>
+			</div>
+		</div>
 	</MainSection>
 </Layout>
- @lib/catalogoData
