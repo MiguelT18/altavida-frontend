@@ -1,3 +1,7 @@
+# TODO:
+1. ❓ Comprimir todas las imágenes a formato webp
+2. ❓ Hacer responsive la galería de imágenes de los desarrollos
+
 # Astro Starter Kit: Basics
 
 ```sh

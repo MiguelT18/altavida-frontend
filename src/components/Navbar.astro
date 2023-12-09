@@ -1,5 +1,6 @@
 ---
 import HamburgerMenu from "public/media/icons/HamburgerMenu.astro";
+import IosExit from "public/media/icons/IosExit.astro";
 ---
 
 <nav
@@ -10,8 +11,30 @@ import HamburgerMenu from "public/media/icons/HamburgerMenu.astro";
     <img src="/media/logos/brand/brandLogo_white.webp" alt="AltaVida Logo" />
   </a>
 
-  <div class="lg:hidden sm:block cursor-pointer">
-    <HamburgerMenu />
+  <div class="lg:hidden sm:block">
+    <div id="open-menu" class="cursor-pointer">
+      <HamburgerMenu />
+    </div>
+
+    <div id="menu" class="hidden">
+      <div
+        class="fixed w-screen h-screen bg-black bg-opacity-90 backdrop-blur-sm top-0 left-0 grid place-content-center gap-4"
+      >
+        <ul
+          class="mx-auto text-center text-md flex flex-col gap-8 [&>li>a]:px-4 [&>li>a]:py-3"
+        >
+          <li><a id="item" href="/desarrollos">Desarrollos</a></li>
+          <li><a id="item" href="/catalogo">Catálogo</a></li>
+          <li><a id="item" href="/financiamiento">Financiamiento</a></li>
+          <li><a id="item" href="/nosotros">Nosotros</a></li>
+          <li><a id="item" href="/testimoniales">Testimonios</a></li>
+          <li><a id="item" href="/blog">Blog</a></li>
+        </ul>
+        <button id="exit-menu" class="absolute top-10 right-10 cursor-pointer">
+          <IosExit />
+        </button>
+      </div>
+    </div>
   </div>
 
   <div class="hidden lg:block sm:hidden mt-2">
@@ -52,6 +75,21 @@ import HamburgerMenu from "public/media/icons/HamburgerMenu.astro";
 <script>
   document.addEventListener("astro:page-load", () => {
     const item = document.querySelectorAll("#item");
+    const menu = document.querySelector("#menu");
+    const openMenu = document.querySelector("#open-menu");
+    const exitMenu = document.querySelector("#exit-menu");
+
+    openMenu?.addEventListener("click", () => {
+      document.body.style.overflow = "hidden";
+      menu?.classList.remove("hidden");
+      menu?.classList.add("fixed");
+    });
+
+    exitMenu?.addEventListener("click", () => {
+      document.body.style.overflow = "auto";
+      menu?.classList.add("hidden");
+      menu?.classList.remove("fixed");
+    });
 
     item.forEach((item) => {
       if (window.location.pathname.includes(item.getAttribute("href") ?? "")) {

@@ -1,0 +1,52 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "@src/layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Previous from "@public/media/icons/Previous.astro";
+import MainSection from "@components/MainSection.astro";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("blog");
+	return posts.map((post) => {
+		return {
+			params: {
+				slug: post.slug,
+			},
+			props: {
+				post,
+			},
+		};
+	});
+}
+
+interface Props {
+	post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+---
+
+<Layout title="blog posts">
+	<Header>
+		<a
+			href="/blog"
+			class="text-sm flex items-center gap-2 hover:text-orange transition-all"
+		>
+			<Previous />
+			<span>Atrás</span>
+		</a>
+	</Header>
+
+	<MainSection>
+		<img
+			transition:name={`${post.slug}`}
+			class="max-w-[380px] mx-auto mb-8"
+			src={post.data.src}
+			alt={post.data.alt}
+		/>
+		<h1 class="text-lg text-center font-bold mb-8">{post.data.title}</h1>
+		<p class="text-sm text-center max-w-[600px] mx-auto">
+			{post.data.description}
+		</p>
+	</MainSection>
+</Layout>

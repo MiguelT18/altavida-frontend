@@ -1,29 +1,11 @@
 ---
+import "@src/index.css";
 import Header from "@components/Header.astro";
 import Layout from "../layouts/Layout.astro";
 import MainSection from "@components/MainSection.astro";
 import ContactLayout from "src/layouts/ContactLayout.astro";
-
-const Creditos = {
-  names: [
-    "Banco Mercantil",
-    "Banco de Crédito (BCP)",
-    "Banco Bisa",
-    "Banco BNB",
-    "Banco Economico",
-    "La primera EFV",
-    "Banco Ganadero",
-  ],
-  src: [
-    "/media/images/pages/financiamiento/creditos/banco_mercantil.png",
-    "/media/images/pages/financiamiento/creditos/banco_bcp.png",
-    "/media/images/pages/financiamiento/creditos/banco_bisa.png",
-    "/media/images/pages/financiamiento/creditos/banco_bnb.jpg",
-    "/media/images/pages/financiamiento/creditos/banco_economico.jpg",
-    "/media/images/pages/financiamiento/creditos/banco_efv.png",
-    "/media/images/pages/financiamiento/creditos/banco_ganadero.png",
-  ],
-};
+import "/src/index.css";
+import { Creditos } from "@lib/creditos";
 ---
 
 <Layout title="AltaVida - Financiamiento 💵">
@@ -40,11 +22,11 @@ const Creditos = {
         nuestra gran familia.
         <br />
         <br />
-         Por eso, te asesoramos para que elijas tu crédito de vivienda social,
-        con la entidad bancaria que mejor se adapte a tus necesidades.
+        {" "}Por eso, te asesoramos para que elijas tu crédito de vivienda
+        social, con la entidad bancaria que mejor se adapte a tus necesidades.
         <br />
         <br />
-         Estás a tiempo para escoger tu hogar con nosotros.
+        {" "}Estás a tiempo para escoger tu hogar con nosotros.
         <br />
         <br />
         <strong>Conoce los diferentes tipos de créditos que aceptamos:</strong>
@@ -52,16 +34,19 @@ const Creditos = {
 
       <div class="creditosContainer">
         {
-          Creditos.names.map((name, index) => (
-            <div class="border-orange text-dark-gray backdrop-blur-3xl bg-slate-100 bg-opacity-60 max-w-[200px] min-h-[100px] p-5 rounded-xl shadow-md shadow-gray-200">
+          Creditos.map((credito, index) => (
+            <div
+              id={`creditoCard-${index}`}
+              class="creditoCard w-full border-orange text-dark-gray backdrop-blur-3xl bg-slate-200 bg-opacity-60 max-w-[200px] min-h-[100px] p-5 rounded-xl shadow-md shadow-gray-200"
+            >
               <img
-                class={`${
-                  index === 5 ? "bg-[#002669] py-6 px-2" : ""
-                } rounded-md`}
-                src={Creditos.src[index]}
+                class="w-full object-cover"
+                src={credito.src}
                 alt="Credit info"
               />
-              <h1 class="text-center text-sm font-my-raleway pt-4">{name}</h1>
+              <h1 class="text-center text-sm font-my-raleway pt-4">
+                {credito.name}
+              </h1>
             </div>
           ))
         }
@@ -71,3 +56,29 @@ const Creditos = {
 
   <ContactLayout />
 </Layout>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const creditosContainer = document.querySelector(".creditosContainer");
+    const observerOptions = {
+      root: null,
+      rootMargin: "80px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const { isIntersecting } = entry;
+        if (isIntersecting) {
+          entry.target.classList.add("fade-in");
+        } else {
+          entry.target.classList.remove("fade-in");
+        }
+      });
+    }, observerOptions);
+
+    creditosContainer?.querySelectorAll(".creditoCard").forEach((card) => {
+      observer.observe(card);
+    });
+  });
+</script>

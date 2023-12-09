@@ -1,21 +1,213 @@
 ---
+import "@src/index.css";
 import Header from "@components/Header.astro";
 import Layout from "../layouts/Layout.astro";
-import MainSection from "@components/MainSection.astro";
 import ContactLayout from "src/layouts/ContactLayout.astro";
+
+import { Nosotros as NosotrosExito } from "@lib/nosotros";
+import { TeamGallery } from "@lib/nosotros";
+
+import History from "public/media/icons/History.astro";
+import HouseHeart from "public/media/icons/HouseHeart.astro";
+import User from "public/media/icons/User.astro";
 ---
 
 <Layout title="AltaVida - Nosotros 👥">
-  <Header title="Sobre nosotros" subtitle="Conoce más nuestra historia" />
-  <MainSection>
-    <h1 class="text-lg text-center font-bold uppercase">Nosotros 👥</h1>
-    <p class="text-sm text-center max-w-[600px] mx-auto">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam quibusdam
-      sit quia nostrum earum ea tempore dolorem. Distinctio totam non
-      consequuntur voluptate officia adipisci magnam, sed, aperiam, ullam natus
-      quibusdam!
+  <Header
+    backgroundImage="/media/images/pages/nosotros/HeaderBackground.webp"
+    title="Sobre nosotros"
+    subtitle="Conoce más nuestra historia"
+  />
+
+  <section class="mb-6">
+    <h1 class="text-black text-lg text-center font-bold uppercase pt-12">
+      ¿Cuál es el secreto de nuestro éxito?
+    </h1>
+    <span
+      class="bg-black block mx-auto w-[60%] max-w-[500px] h-[2px] relative after:block after:w-[30%] after:h-[5px] after:mx-auto after:bg-orange mt-5 mb-10"
+    ></span>
+    <p class="text-sm text-center max-w-[540px] mx-auto">
+      La filosofía de Alta Vida está basada en la innovación, la planificación y
+      el cuidado de sus clientes.
     </p>
-  </MainSection>
+
+    <article class="flex justify-center flex-wrap gap-10 mx-4 pb-14 pt-12">
+      {
+        NosotrosExito.map((item) => (
+          <figure
+            id="exito-card"
+            class="nosotrosCard w-[90%] max-w-[380px] bg-white border-gray-300 border-2 rounded-2xl px-6 py-8 shadow-lg shadow-gray-400"
+          >
+            <h2 class="text-md font-bold uppercase text-black">{item.title}</h2>
+            <p class="text-sm pt-2 pb-6 text-dark">{item.description}</p>
+            <img
+              class="w-full h-fit object-cover"
+              src={item.src}
+              alt="Conoce nuestro éxito"
+            />
+          </figure>
+        ))
+      }
+    </article>
+  </section>
+
+  <section class="bg-navy-blue text-white pb-4">
+    <div class="text-center flex flex-col items-center gap-1 py-10">
+      <h1 class="text-xl font-my-raleway font-bold uppercase">
+        Nosotros somos
+      </h1>
+      <p class="text-sm">Alta Vida, empresa que motiva al cambio.</p>
+    </div>
+
+    <picture class="teamGallery">
+      {
+        TeamGallery.map((image) => (
+          <img
+            class="teamImage h-full object-cover cursor-pointer"
+            src={image}
+            alt="Team picture"
+          />
+        ))
+      }
+    </picture>
+
+    <div
+      class="max-w-[500px] mx-auto flex flex-col items-center justify-center gap-10 py-10 px-4"
+    >
+      <div class="flex items-center gap-4">
+        <div
+          class="bg-steel-blue border-2 border-orange max-w-[100px] p-3 md:p-5"
+        >
+          <History />
+        </div>
+        <p class="flex items-center gap-3">
+          <span class="font-bold text-lg text-orange" data-count="9"></span>
+          <span class="text-md">
+            <strong>Años</strong> de historia
+          </span>
+        </p>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <div
+          class="bg-steel-blue border-2 border-orange max-w-[100px] p-3 md:p-5"
+        >
+          <HouseHeart />
+        </div>
+        <p class="flex items-center gap-3">
+          <span class="font-bold text-lg text-orange">+</span><span
+            class="font-bold text-lg text-orange"
+            data-count="350"></span>
+          <span class="text-md">
+            <strong>Casas</strong> en todo Tarija
+          </span>
+        </p>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <div
+          class="bg-steel-blue border-2 border-orange max-w-[100px] p-3 md:p-5"
+        >
+          <User />
+        </div>
+        <p class="flex items-center gap-3">
+          <span
+            id="familias-counter"
+            class="font-bold text-lg text-orange"
+            data-count="2000"></span>
+          <span class="text-md">
+            <strong>Familias</strong> felices
+          </span>
+        </p>
+      </div>
+    </div>
+  </section>
 
   <ContactLayout />
 </Layout>
+
+<script lang="js">
+  document.addEventListener("astro:page-load", () => {
+    const counters = document.querySelectorAll("[data-count]");
+    const speed = 800;
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.2,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const { isIntersecting, target } = entry;
+        if (isIntersecting) {
+          const counter = target;
+
+          const updateCount = () => {
+            const target = +counter.getAttribute("data-count");
+            const count = +counter.innerText;
+
+            const increment = target / speed;
+
+            if (count < target) {
+              counter.innerText = Math.ceil(count + increment).toString();
+              setTimeout(updateCount, 1);
+            } else {
+              counter.innerText = target.toString();
+            }
+          };
+
+          updateCount();
+        } else {
+          const counter = target;
+          counter.innerText = "0";
+        }
+      });
+    }, observerOptions);
+
+    counters.forEach((counter) => {
+      observer.observe(counter);
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const exitoCards = document.querySelectorAll("#exito-card");
+    const galleryContainer = document.querySelector(".teamGallery");
+    const observerOptions = {
+      root: null,
+      rootMargin: "80px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const { isIntersecting } = entry;
+        if (isIntersecting) {
+          entry.target.classList.add("fade-in");
+        } else {
+          entry.target.classList.remove("fade-in");
+        }
+      });
+    }, observerOptions);
+
+    galleryContainer?.querySelectorAll(".teamImage").forEach((credito) => {
+      observer.observe(credito);
+    });
+    exitoCards?.forEach((card) => {
+      observer.observe(card);
+    });
+  });
+</script>
+
+<style>
+  .teamGallery {
+    display: grid;
+    align-items: stretch;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0.5rem;
+    padding: 1rem;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+</style>

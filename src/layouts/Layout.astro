@@ -1,7 +1,9 @@
 ---
 import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
+import CircleUp from "@public/media/icons/CircleUp.astro";
 import { ViewTransitions } from "astro:transitions";
+import WhatsApp from "public/media/icons/WhatsApp.astro";
 
 interface Props {
   title: string;
@@ -38,10 +40,35 @@ const { title } = Astro.props;
 
     <main>
       <slot />
+      <div class="fixed bottom-0 right-0 m-10 max-lg:m-5 z-10">
+        <button
+          onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+          id="moveToTop"
+          class="hidden slide-in absolute bottom-28 right-0 text-sm text-orange rounded-lg"
+          ><CircleUp /></button
+        >
+        <a
+          href="https://wa.link/ovut67"
+          class="absolute right-0 bottom-0 text-md uppercase text-white bg-orange p-2 rounded-full"
+        >
+          <WhatsApp />
+        </a>
+      </div>
     </main>
 
     <Footer />
     <style>
+      .slide-in {
+        animation: slideIn 1s ease-in both;
+        transform: translateX(300px);
+      }
+
+      @keyframes slideIn {
+        to {
+          transform: translateX(0px);
+        }
+      }
+
       * {
         box-sizing: border-box;
       }
@@ -80,5 +107,18 @@ const { title } = Astro.props;
         height: auto;
       }
     </style>
+
+    <script>
+      document.addEventListener("astro:page-load", () => {
+        const moveToTop = document.getElementById("moveToTop");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 400) {
+            moveToTop?.classList.remove("hidden");
+          } else {
+            moveToTop?.classList.add("hidden");
+          }
+        });
+      });
+    </script>
   </body>
 </html>

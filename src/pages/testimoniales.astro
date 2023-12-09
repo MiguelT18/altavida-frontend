@@ -3,6 +3,7 @@ import Header from "@components/Header.astro";
 import Layout from "../layouts/Layout.astro";
 import MainSection from "@components/MainSection.astro";
 import ContactLayout from "src/layouts/ContactLayout.astro";
+import PhoneContact from "public/media/icons/PhoneContact.astro";
 ---
 
 <Layout title="AltaVida - Testimoniales 🗣">
@@ -11,13 +12,34 @@ import ContactLayout from "src/layouts/ContactLayout.astro";
     subtitle="Descubre las opciones de nuestros clientes satisfechos"
   />
   <MainSection>
-    <h1 class="text-lg text-center font-bold uppercase">Testimonios 🗣️</h1>
-    <p class="text-sm text-center max-w-[600px] mx-auto">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam quibusdam
-      sit quia nostrum earum ea tempore dolorem. Distinctio totam non
-      consequuntur voluptate officia adipisci magnam, sed, aperiam, ullam natus
-      quibusdam!
-    </p>
+    <div
+      class="flex max-lg:flex-col max-lg:text-center justify-center max-w-[80%] mx-auto gap-10"
+    >
+      <div class="w-full max-w-[500px]">
+        <h1 class="text-lg mb-4 text-black">
+          Conoce lo que piensan nuestros clientes de AltaVida
+        </h1>
+        <p class="text-sm text-dark">
+          En AltaVida, la confianza de nuestros clientes es nuestra mayor
+          recompensa. Descubre por qué nos eligen una y otra vez para encontrar
+          su hogar perfecto en medio de la naturaleza.
+        </p>
+        <a
+          class="flex gap-3 items-center bg-orange hover:bg-[#De7700] transition-all mt-6 rounded-lg w-fit text-white px-5 py-2 max-lg:mx-auto"
+          href="https://wa.link/ovut67"
+        >
+          <span class="text-sm">Ponerse en contacto</span>
+          <PhoneContact />
+        </a>
+      </div>
+      <div>
+        <img
+          class="w-full max-w-[420px] object-cover"
+          src="/media/images/pages/testimoniales/testimonio_11.webp"
+          alt="Familias felices en AltaVida"
+        />
+      </div>
+    </div>
   </MainSection>
 
   <ContactLayout />

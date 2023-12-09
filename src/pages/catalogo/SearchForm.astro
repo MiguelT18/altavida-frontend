@@ -1,0 +1,108 @@
+---
+import { Modelos } from "@lib/catalogo";
+import "/src/index.css";
+---
+
+<div>
+	<form id="form" class="relative mb-14">
+		<input
+			id="search"
+			name="search"
+			placeholder="Buscar modelo..."
+			class="border-2 border-gray-300 text-sm px-6 py-3 w-full rounded-full pr-10"
+		/>
+	</form>
+	<article>
+		<ul class="modelosContainer">
+			{
+				Modelos.map((modelo) => (
+					<div class="modelo w-fit border-orange text-dark-gray backdrop-blur-3xl bg-slate-200 bg-opacity-60 max-w-[300px] min-h-[100px] p-5 rounded-xl shadow-md shadow-gray-200">
+						<div class="flex flex-col gap-3">
+							<h3
+								transition:name={`${modelo.path}-catalogo-title`}
+								class="font-bold text-sm text-center pb-2 uppercase text-dark-gray"
+							>
+								{modelo.name}
+							</h3>
+							<a href={`/catalogo/${modelo.path}`}>
+								<img
+									transition:name={`${modelo.path}-catalogo-image`}
+									class="w-full max-w-[300px] mx-auto cursor-pointer"
+									src={modelo.src[0]}
+									alt={`Modelo ${modelo.name}`}
+								/>
+							</a>
+							<p
+								transition:name={`${modelo.path}-catalogo-description`}
+								class="text-center text-sm"
+							>
+								{modelo.description}
+							</p>
+						</div>
+						<div class="flex justify-between items-center mt-4">
+							<span class="text-sm font-bold">
+								$ {modelo.price.toFixed().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}{" "}
+								USD
+							</span>
+							<a
+								transition:name={`${modelo.path}-catalogo-button`}
+								class="hover:text-white hover:bg-orange bg-inherit hover:border-[2px] hover:border-orange text-orange hover:font-bold transition-all rounded-full text-sm px-6 py-2 border-2 border-orange"
+								href={`/catalogo/${modelo.path}`}
+							>
+								Ver más
+							</a>
+						</div>
+					</div>
+				))
+			}
+		</ul>
+	</article>
+</div>
+
+<script>
+	document.addEventListener("astro:page-load", () => {
+		const searchInput = document.getElementById("search");
+		const modelosContainer = document.querySelector(".modelosContainer");
+		const observerOptions = {
+			root: null,
+			rootMargin: "80px",
+			threshold: 0,
+		};
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				const { isIntersecting } = entry;
+				if (isIntersecting) {
+					entry.target.classList.add("fade-in");
+				} else {
+					entry.target.classList.remove("fade-in");
+				}
+			});
+		}, observerOptions);
+
+		searchInput?.addEventListener("input", (e) => {
+			const searchInput = e.target as HTMLInputElement;
+			const searchValue = searchInput.value;
+			const modelosContainer = document.querySelector(
+				".modelosContainer",
+			) as HTMLElement;
+			const modelos = modelosContainer
+				? Array.from(modelosContainer.children)
+				: [];
+
+			modelos.forEach((modelo) => {
+				const name = modelo.querySelector("h3")?.textContent;
+				if (!name?.toLowerCase().includes(searchValue.toLowerCase())) {
+					modelo.classList.add("hidden");
+				} else {
+					modelo.classList.remove("hidden");
+					modelo.classList.add("block");
+				}
+			});
+		});
+
+		modelosContainer?.querySelectorAll(".modelo").forEach((modelo) => {
+			observer.observe(modelo);
+		});
+	});
+</script>
