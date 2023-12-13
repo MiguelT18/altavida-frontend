@@ -1,8 +1,11 @@
 ---
 import Header from "@components/Header.astro";
-import Layout from "../../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
 import MainSection from "@components/MainSection.astro";
-import ContactLayout from "src/layouts/ContactLayout.astro";
+import ContactLayout from "@src/layouts/ContactLayout.astro";
+import PostViews from "@media/icons/PostViews.astro";
+import "@src/index.css";
+
 import { getCollection } from "astro:content";
 
 const posts = await getCollection("blog");
@@ -10,7 +13,7 @@ const posts = await getCollection("blog");
 
 <Layout title="AltaVida - Blog 📣">
   <Header
-    backgroundImage="/media/images/pages/blog/HeaderBackground.webp"
+    backgroundImage="/src/media/images/pages/blog/HeaderBackground.webp"
     title="Blog"
     subtitle="Ponte al día con las últimas noticias"
   />
@@ -19,29 +22,41 @@ const posts = await getCollection("blog");
       {
         posts.map((post) => {
           return (
-            <figure class="max-w-[380px] bg-gradient-to-t from-slate-900 to-navy-blue text-white border-2 border-orange rounded-2xl p-6">
-              <img
-                transition:name={`${post.slug}`}
-                class="w-full object-cover mb-5"
-                src={post.data.src}
-                alt={post.data.alt}
-              />
+            <figure
+              id="postCard"
+              class="bg-navy-blue bg-opacity-5 border-2 border-gray-200 rounded-2xl"
+            >
+              <a href={`/blog/${post.slug}`}>
+                <img
+                  transition:name={`${post.slug}`}
+                  class="w-full h-[200px] object-cover rounded-t-2xl"
+                  src={post.data.src}
+                  alt={post.data.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
 
-              <div>
-                <h3 class="text-md font-my-raleway font-bold mb-3">
-                  {post.data.title}
-                </h3>
-                <p class="text-sm">{post.data.description}</p>
-              </div>
+              <div class="p-6">
+                <div>
+                  <h3 class="text-md uppercase font-my-raleway font-bold mb-3">
+                    {post.data.title}
+                  </h3>
+                  <p class="text-dark text-sm">{post.data.description}</p>
+                </div>
 
-              <div class="text-sm flex items-center w-full justify-between gap-2 pt-5">
-                <span>{post.data.views}</span>
-                <a
-                  class="bg-orange hover:bg-[#De7700] py-2 px-4 block w-fit transition-all text-white font-my-raleway font-bold rounded-md"
-                  href={`/blog/${post.slug}`}
-                >
-                  Ver más
-                </a>
+                <div class="text-sm flex items-center w-full justify-between gap-2 pt-5">
+                  <span class="flex gap-2">
+                    <PostViews />
+                    {post.data.views}
+                  </span>
+                  <a
+                    class="bg-orange hover:bg-[#De7700] py-2 px-4 block w-fit transition-all text-white font-my-raleway font-bold rounded-md"
+                    href={`/blog/${post.slug}`}
+                  >
+                    Ver más
+                  </a>
+                </div>
               </div>
             </figure>
           );
@@ -56,9 +71,35 @@ const posts = await getCollection("blog");
 <style>
   .blogPosts_Container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     justify-items: center;
     align-items: start;
-    gap: 3rem;
+    gap: 2.3rem;
   }
 </style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const postCards = document.querySelectorAll("#postCard");
+    const observerOptions = {
+      root: null,
+      rootMargin: "200px",
+      threshold: 0.9,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const { isIntersecting } = entry;
+        if (isIntersecting) {
+          entry.target.classList.add("fade-in");
+        } else {
+          entry.target.classList.remove("fade-in");
+        }
+      });
+    }, observerOptions);
+
+    postCards.forEach((card) => {
+      observer.observe(card);
+    });
+  });
+</script>

@@ -1,10 +1,13 @@
 ---
 import Header from "@components/Header.astro";
 import MainSection from "@components/MainSection.astro";
-import Layout from "@layout/Layout.astro";
-import Previous from "public/media/icons/Previous.astro";
+import Layout from "@layouts/Layout.astro";
+import Previous from "@media/icons/Previous.astro";
 import { Modelos } from "@lib/catalogo";
-import PhoneContact from "public/media/icons/PhoneContact.astro";
+import PhoneContact from "@media/icons/PhoneContact.astro";
+import ContactLayout from "@src/layouts/ContactLayout.astro";
+import ExitIcon from "@src/media/icons/Exit.astro";
+import "@src/index.css";
 
 export function getStaticPaths() {
 	return Modelos.map((modelo) => {
@@ -18,6 +21,10 @@ export function getStaticPaths() {
 
 const { modelo } = Astro.params;
 const modeloCapitalized = modelo.charAt(0).toUpperCase() + modelo.slice(1);
+
+const currentModelo = Modelos.find((m) => m.path === modelo);
+const features = currentModelo?.features;
+const images = currentModelo?.src;
 ---
 
 <Layout title={`Modelo ${modeloCapitalized}`}>
@@ -32,7 +39,7 @@ const modeloCapitalized = modelo.charAt(0).toUpperCase() + modelo.slice(1);
 	</Header>
 
 	<MainSection>
-		<div class="flex max-lg:flex-col justify-around">
+		<header class="flex max-lg:flex-col justify-around gap-10 px-10">
 			<div class="max-w-[520px] max-lg:mx-auto max-lg:mb-8">
 				<h1
 					transition:name={`${modelo}-catalogo-title`}
@@ -44,14 +51,14 @@ const modeloCapitalized = modelo.charAt(0).toUpperCase() + modelo.slice(1);
 					transition:name={`${modelo}-catalogo-description`}
 					class="max-lg:text-center max-w-[600px] text-sm mt-4"
 				>
-					{Modelos.find((m) => m.path === (modelo as string))?.description}
+					{Modelos.find((m) => m.path === (modelo as string))?.moreDescription}
 				</p>
 				<a
 					transition:name={`${modelo}-catalogo-button`}
-					class="flex gap-3 items-center bg-orange hover:bg-[#De7700] transition-all mt-5 rounded-lg w-fit text-white px-5 py-2 max-lg:mx-auto"
+					class="flex gap-3 items-center bg-orange hover:bg-[#De7700] transition-all mt-6 rounded-lg w-fit text-white px-5 py-2 max-lg:mx-auto"
 					href="https://wa.link/ovut67"
 				>
-					<span class="text-sm">Contacto</span>
+					<span class="text-sm">Contáctanos</span>
 					<PhoneContact />
 				</a>
 			</div>
@@ -60,10 +67,162 @@ const modeloCapitalized = modelo.charAt(0).toUpperCase() + modelo.slice(1);
 				<img
 					transition:name={`${modelo}-catalogo-image`}
 					class="w-full max-w-[600px] h-full"
-					src={`/media/images/pages/catalogo/${modelo}1.webp`}
+					src={`/src/media/images/pages/catalogo/${modelo}1.webp`}
 					alt={`Modelo ${modeloCapitalized}`}
+					loading="lazy"
+					decoding="async"
 				/>
 			</div>
+		</header>
+
+		<div class="mt-14 mb-20">
+			<h3 class="text-black text-lg text-center font-bold uppercase">
+				Explora nuestra galería
+			</h3>
+			<span
+				class="bg-black block mx-auto w-[60%] max-w-[500px] h-[2px] relative after:block after:w-[30%] after:h-[5px] after:mx-auto after:bg-orange mt-8"
+			></span>
+			<div class="modeloImageGallery">
+				{
+					images?.map((image) => {
+						return (
+							<figure>
+								<img
+									id="modeloImage"
+									class="w-full max-w-[400px] object-cover mt-20 cursor-pointer"
+									src={image}
+									alt={`Modelo ${modeloCapitalized}`}
+									loading="lazy"
+									decoding="async"
+								/>
+							</figure>
+						);
+					})
+				}
+			</div>
+			<dialog id="modal">
+				<img
+					class="w-full max-w-[900px] fixed z-50 max-sm:top-1/3 top-1/4 left-0 right-0 mx-auto"
+					alt="Render bless 6"
+				/>
+				<span
+					id="close-button"
+					class="fixed hover:scale-110 transition-all top-0 mt-10 mr-10 right-0 z-50 border-4 border-orange bg-orange bg-opacity-20 rounded-full p-2 cursor-pointer"
+				>
+					<ExitIcon />
+				</span>
+			</dialog>
 		</div>
+
+		<section class="mt-14">
+			<h3 class="text-black text-lg text-center font-bold uppercase">
+				Características
+			</h3>
+			<span
+				class="bg-black block mx-auto w-[60%] max-w-[500px] h-[2px] relative after:block after:w-[30%] after:h-[5px] after:mx-auto after:bg-orange mt-8 mb-14"
+			></span>
+
+			<div>
+				{
+					features?.map((feature) => {
+						if (typeof feature === "object") {
+							return (
+								<div class="flex justify-evenly">
+									<div>
+										<h3 class="text-md font-bold mb-4">Planta Baja:</h3>
+										<ul class="flex flex-col gap-2">
+											{feature.plantaBaja.map((item) => (
+												<li class="text-sm">🟠 {item}</li>
+											))}
+										</ul>
+									</div>
+									<div>
+										<h3 class="text-md font-bold mb-4">Planta Alta:</h3>
+										<ul class="flex flex-col gap-2">
+											{feature.plantaAlta.map((item) => (
+												<li class="text-sm">🟠 {item}</li>
+											))}
+										</ul>
+									</div>
+								</div>
+							);
+						} else {
+							return <p class="text-sm text-center mb-2">🟠 {feature}</p>;
+						}
+					})
+				}
+			</div>
+		</section>
 	</MainSection>
+
+	<ContactLayout />
 </Layout>
+
+<style>
+	.modeloImageGallery {
+		width: 100%;
+		max-width: 800px;
+		margin: 0 auto;
+		display: grid;
+		justify-items: center;
+		align-items: center;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1rem;
+	}
+	.modeloImageGallery figure {
+		transition: transform 0.3s ease-out;
+		cursor: pointer;
+	}
+	.modeloImageGallery figure:hover {
+		transform: scale(1.05);
+	}
+</style>
+
+<script lang="js">
+	document.addEventListener("astro:page-load", () => {
+		const modal = document.querySelector("#modal");
+		const modalImage = document.querySelector("#modal img");
+		const closeModal = document.querySelector("#close-button");
+		const openModal = document.querySelectorAll("#modeloImage");
+
+		openModal.forEach((open) => {
+			open.addEventListener("click", () => {
+				const image = open.getAttribute("src");
+				modalImage?.setAttribute("src", image);
+				modal?.showModal();
+				document.body.style.overflow = "hidden";
+			});
+		});
+
+		closeModal?.addEventListener("click", () => {
+			modal?.close();
+			document.body.style.overflow = "auto";
+		});
+	});
+</script>
+
+<script lang="js">
+	document.addEventListener("astro:page-load", () => {
+		const modeloImage = document.querySelectorAll("#modeloImage");
+		const observerOptions = {
+			root: null,
+			rootMargin: "200px",
+			threshold: 0.9,
+		};
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				const { isIntersecting } = entry;
+				if (isIntersecting) {
+					entry.target.classList.add("fade-in");
+				} else {
+					entry.target.classList.remove("fade-in");
+				}
+			});
+		}, observerOptions);
+
+		modeloImage.forEach((image) => {
+			observer.observe(image);
+		});
+	});
+</script>

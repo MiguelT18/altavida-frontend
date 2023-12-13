@@ -1,26 +1,28 @@
 ---
 import Header from "@components/Header.astro";
 import MainSection from "@components/MainSection.astro";
-import PhoneContact from "public/media/icons/PhoneContact.astro";
-import Previous from "public/media/icons/Previous.astro";
-import ContactLayout from "src/layouts/ContactLayout.astro";
-import Layout from "src/layouts/Layout.astro";
+import PhoneContact from "@media/icons/PhoneContact.astro";
+import Previous from "@media/icons/Previous.astro";
+import ContactLayout from "@src/layouts/ContactLayout.astro";
+import Layout from "@src/layouts/Layout.astro";
+import ExitIcon from "@src/media/icons/Exit.astro";
+import "@src/index.css";
 
 const SliderImages = [
-	"/media/images/pages/desarrollos/rioVida/1.webp",
-	"/media/images/pages/desarrollos/rioVida/2.webp",
-	"/media/images/pages/desarrollos/rioVida/3.webp",
-	"/media/images/pages/desarrollos/rioVida/4.webp",
-	"/media/images/pages/desarrollos/rioVida/5.webp",
-	"/media/images/pages/desarrollos/rioVida/6.webp",
-	"/media/images/pages/desarrollos/rioVida/7.webp",
-	"/media/images/pages/desarrollos/rioVida/8.webp",
-	"/media/images/pages/desarrollos/rioVida/9.webp",
-	"/media/images/pages/desarrollos/rioVida/10.webp",
-	"/media/images/pages/desarrollos/rioVida/11.webp",
-	"/media/images/pages/desarrollos/rioVida/12.webp",
-	"/media/images/pages/desarrollos/rioVida/13.webp",
-	"/media/images/pages/desarrollos/rioVida/14.webp",
+	"/src/media/images/pages/desarrollos/rioVida/1.webp",
+	"/src/media/images/pages/desarrollos/rioVida/2.webp",
+	"/src/media/images/pages/desarrollos/rioVida/3.webp",
+	"/src/media/images/pages/desarrollos/rioVida/4.webp",
+	"/src/media/images/pages/desarrollos/rioVida/5.webp",
+	"/src/media/images/pages/desarrollos/rioVida/6.webp",
+	"/src/media/images/pages/desarrollos/rioVida/7.webp",
+	"/src/media/images/pages/desarrollos/rioVida/8.webp",
+	"/src/media/images/pages/desarrollos/rioVida/9.webp",
+	"/src/media/images/pages/desarrollos/rioVida/10.webp",
+	"/src/media/images/pages/desarrollos/rioVida/11.webp",
+	"/src/media/images/pages/desarrollos/rioVida/12.webp",
+	"/src/media/images/pages/desarrollos/rioVida/13.webp",
+	"/src/media/images/pages/desarrollos/rioVida/14.webp",
 ];
 
 function shuffleArray(array: Array<string>) {
@@ -36,7 +38,7 @@ const shuffledImages = shuffleArray(SliderImages);
 
 <Layout title="Desarrollo - Río Vida">
 	<Header
-		backgroundImage="/media/images/pages/desarrollos/rioVida/renderHeader.jpg"
+		backgroundImage="/src/media/images/pages/desarrollos/rioVida/renderHeader.jpg"
 	>
 		<a
 			href="/desarrollos"
@@ -66,15 +68,17 @@ const shuffledImages = shuffleArray(SliderImages);
 					class="flex gap-3 items-center bg-orange hover:bg-[#De7700] transition-all mt-5 rounded-lg w-fit text-white px-5 py-2 max-lg:mx-auto"
 					href="https://wa.link/ovut67"
 				>
-					<span class="text-sm">Contacto</span>
+					<span class="text-sm">Contáctanos</span>
 					<PhoneContact />
 				</a>
 			</figure>
 			<img
 				transition:name="riovida-image"
 				class="w-full max-w-[380px] max-lg:max-w-[600px] h-full mx-auto"
-				src="/media/images/pages/desarrollos/rioVida/rioVida_portada.png"
+				src="/src/media/images/pages/desarrollos/rioVida/rioVida_portada.png"
 				alt="RioVida render button"
+				loading="lazy"
+				decoding="async"
 			/>
 		</article>
 
@@ -85,21 +89,59 @@ const shuffledImages = shuffleArray(SliderImages);
 			<div class="riovidaImageGallery">
 				{
 					shuffledImages.map((image, index) => (
-						<figure id="riovida-image-card">
+						<figure>
 							<img
+								id="riovida-image-card"
 								class="w-full max-w-[1080px]"
 								src={image}
 								alt={`Image: #${index}`}
+								loading="lazy"
+								decoding="async"
 							/>
 						</figure>
 					))
 				}
 			</div>
+			<dialog id="modal">
+				<img
+					class="w-full max-w-[900px] fixed z-50 max-sm:top-1/3 top-1/4 left-0 right-0 mx-auto"
+					alt="Render bless 6"
+				/>
+				<span
+					id="close-button"
+					class="fixed hover:scale-110 transition-all top-0 mt-10 mr-10 right-0 z-50 border-4 border-orange bg-orange bg-opacity-20 rounded-full p-2 cursor-pointer"
+				>
+					<ExitIcon />
+				</span>
+			</dialog>
 		</div>
 	</MainSection>
 
 	<ContactLayout />
 </Layout>
+
+<script lang="js">
+	document.addEventListener("astro:page-load", () => {
+		const modal = document.querySelector("#modal");
+		const modalImage = document.querySelector("#modal img");
+		const closeModal = document.querySelector("#close-button");
+		const openModal = document.querySelectorAll("#riovida-image-card");
+
+		openModal.forEach((element) => {
+			element.addEventListener("click", () => {
+				const image = element.getAttribute("src");
+				modalImage?.setAttribute("src", image);
+				modal?.showModal();
+				document.body.style.overflow = "hidden";
+			});
+		});
+
+		closeModal?.addEventListener("click", () => {
+			modal?.close();
+			document.body.style.overflow = "auto";
+		});
+	});
+</script>
 
 <script>
 	document.addEventListener("astro:page-load", () => {
@@ -115,15 +157,38 @@ const shuffledImages = shuffleArray(SliderImages);
 	});
 </script>
 
+<script>
+	document.addEventListener("astro:page-load", () => {
+		const image = document.querySelectorAll("#riovida-image-card");
+		const observerOptions = {
+			root: null,
+			rootMargin: "150px",
+			threshold: 0.9,
+		};
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				const { isIntersecting } = entry;
+				if (isIntersecting) {
+					entry.target.classList.add("fade-in");
+				} else {
+					entry.target.classList.remove("fade-in");
+				}
+			});
+		}, observerOptions);
+
+		image.forEach((image) => {
+			observer.observe(image);
+		});
+	});
+</script>
+
 <style>
 	.riovidaImageGallery figure.active {
 		position: fixed;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		top: 50%;
-		left: 50%;
+		display: grid;
+		place-content: center;
+		top: 0;
 		transition: background 0.3s ease;
 		transform: translate(-50%, -50%);
 		background: rgba(0, 0, 0, 0.75);
@@ -138,7 +203,7 @@ const shuffledImages = shuffleArray(SliderImages);
 		display: grid;
 		justify-items: center;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-		gap: 3px;
+		gap: 0.6rem;
 	}
 	.riovidaImageGallery figure {
 		position: relative;
@@ -146,7 +211,7 @@ const shuffledImages = shuffleArray(SliderImages);
 		transition: transform 0.3s ease-out;
 		cursor: pointer;
 	}
-	.riovidaImageGallery figure:not(.active):hover {
-		transform: scale(1.03);
+	.riovidaImageGallery figure:hover {
+		transform: scale(1.05);
 	}
 </style>

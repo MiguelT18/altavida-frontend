@@ -1,8 +1,9 @@
 ---
-import ContactLayout from "src/layouts/ContactLayout.astro";
-import Layout from "../layouts/Layout.astro";
+import ContactLayout from "@src/layouts/ContactLayout.astro";
+import Layout from "@layouts/Layout.astro";
 import ProjectCard from "@components/ProjectCard.astro";
-import BlogViewLayout from "src/layouts/BlogViewLayout.astro";
+import BlogViewLayout from "@src/layouts/BlogViewLayout.astro";
+import "@src/index.css";
 ---
 
 <Layout title="AltaVida - Inicio">
@@ -47,21 +48,21 @@ import BlogViewLayout from "src/layouts/BlogViewLayout.astro";
 					<ProjectCard
 						title="Bless"
 						description="Explora condominios verticales elegantes y cómodos. Más de 9 años de experiencia y 350 casas de alta calidad entregadas. Encuentra tu espacio perfecto en nuestros proyectos."
-						image="/media/logos/projects/Logo_Bless.webp"
+						image="/src/media/logos/projects/Logo_Bless.webp"
 					/>
 				</div>
 				<div class="swiper-slide">
 					<ProjectCard
 						title="Alta Mira"
 						description="Tu hogar en el cielo. Lujo, comodidad y vistas inspiradoras se fusionan en tu nuevo refugio en las alturas."
-						image="/media/logos/projects/Logo_AltaMira.webp"
+						image="/src/media/logos/projects/Logo_AltaMira.webp"
 					/>
 				</div>
 				<div class="swiper-slide">
 					<ProjectCard
 						title="Río Vida"
 						description="Naturaleza y comodidad en un hogar perfecto respaldado por años de experiencia en alta calidad. Tu refugio, un nuevo comienzo."
-						image="/media/logos/projects/Logo_RioVida.webp"
+						image="/src/media/logos/projects/Logo_RioVida.webp"
 					/>
 				</div>
 			</div>
@@ -89,6 +90,32 @@ import BlogViewLayout from "src/layouts/BlogViewLayout.astro";
 	});
 </script>
 
+<script>
+	document.addEventListener("astro:page-load", () => {
+		const swiper = document.querySelector(".swiper");
+		const oberserverOptions = {
+			root: null,
+			rootMargin: "100px",
+			threshold: 0.5,
+		};
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				const { isIntersecting } = entry;
+				if (isIntersecting) {
+					swiper?.classList.add("fade-in");
+				} else {
+					swiper?.classList.remove("fade-in");
+				}
+			});
+		}, oberserverOptions);
+
+		if (swiper) {
+			observer.observe(swiper);
+		}
+	});
+</script>
+
 <style>
 	.swiper-wrapper {
 		padding: 40px 0 60px;
@@ -96,7 +123,7 @@ import BlogViewLayout from "src/layouts/BlogViewLayout.astro";
 
 	section:first-child {
 		min-height: 100vh;
-		background-image: url("/media/images/pages/home/01_HeroImg.webp");
+		background-image: url("/src/media/images/pages/home/01_HeroImg.webp");
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center;
@@ -107,16 +134,16 @@ import BlogViewLayout from "src/layouts/BlogViewLayout.astro";
 
 	@keyframes changeImage {
 		0% {
-			background-image: url("/media/images/pages/home/01_HeroImg.webp");
+			background-image: url("/src/media/images/pages/blog/blogs/post-1/tarija02.webp");
 		}
 		33% {
-			background-image: url("/media/images/pages/home/02_HeroImg.webp");
+			background-image: url("/src/media/images/pages/home/02_HeroImg.webp");
 		}
 		66% {
-			background-image: url("/media/images/pages/home/03_HeroImg.webp");
+			background-image: url("/src/media/images/pages/home/01_HeroImg.webp");
 		}
 		100% {
-			background-image: url("/media/images/pages/home/04_HeroImg.webp");
+			background-image: url("/src/media/images/pages/home/03_HeroImg.webp");
 		}
 	}
 </style>

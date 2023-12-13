@@ -12,7 +12,13 @@ const { image, title, description } = Astro.props;
   <div
     class="h-full text-center flex flex-col items-center justify-between bg-gradient-to-t from-slate-900 to-navy-blue text-white border-orange border-2 px-4 pt-10 pb-5 rounded-3xl shadow-lg shadow-gray-500"
   >
-    <img class="max-w-[70%] mx-auto" src={image} alt="Project Description" />
+    <img
+      class="max-w-[70%] mx-auto"
+      src={image}
+      alt="Project Description"
+      loading="lazy"
+      decoding="async"
+    />
     <div class="flex flex-col items-center justify-center gap-2 py-5">
       <h1 class="text-md font-bold font-my-raleway uppercase">{title}</h1>
       <p class="text-sm">{description}</p>

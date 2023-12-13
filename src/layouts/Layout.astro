@@ -1,9 +1,9 @@
 ---
 import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
-import CircleUp from "@public/media/icons/CircleUp.astro";
+import CircleUp from "@media/icons/CircleUp.astro";
 import { ViewTransitions } from "astro:transitions";
-import WhatsApp from "public/media/icons/WhatsApp.astro";
+import WhatsApp from "@media/icons/WhatsApp.astro";
 
 interface Props {
   title: string;
@@ -24,7 +24,7 @@ const { title } = Astro.props;
     <link
       rel="icon"
       type="image/webp"
-      href="/media/logos/brand/simpleLogo.webp"
+      href="/src/media/logos/brand/simpleLogo.webp"
     />
     <!-- Swiper -->
     <link
@@ -40,7 +40,7 @@ const { title } = Astro.props;
 
     <main>
       <slot />
-      <div class="fixed bottom-0 right-0 m-10 max-lg:m-5 z-10">
+      <div class="fixed bottom-0 right-0 m-10 max-lg:m-5 z-40">
         <button
           onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
           id="moveToTop"
@@ -112,7 +112,7 @@ const { title } = Astro.props;
       document.addEventListener("astro:page-load", () => {
         const moveToTop = document.getElementById("moveToTop");
         window.addEventListener("scroll", () => {
-          if (window.scrollY > 400) {
+          if (window.scrollY > 200) {
             moveToTop?.classList.remove("hidden");
           } else {
             moveToTop?.classList.add("hidden");

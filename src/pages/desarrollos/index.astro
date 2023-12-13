@@ -3,6 +3,7 @@ import Header from "@components/Header.astro";
 import Layout from "../../layouts/Layout.astro";
 import MainSection from "@components/MainSection.astro";
 import ContactLayout from "src/layouts/ContactLayout.astro";
+import "@src/index.css";
 ---
 
 <Layout title="AltaVida - Desarrollos 🔨">
@@ -32,9 +33,11 @@ import ContactLayout from "src/layouts/ContactLayout.astro";
       <a class="relative flex justify-center" href="/desarrollos/altamira">
         <img
           transition:name="altamira-image"
-          class="max-w-[400px] h-full"
-          src="/media/images/pages/desarrollos/altaMira/renderCard.png"
+          class="max-w-[400px] transition-all"
+          src="/src/media/images/pages/desarrollos/altaMira/renderCard.png"
           alt="Alta Mira render button"
+          loading="lazy"
+          decoding="async"
         />
         <div
           class="absolute bottom-10 text-white font-bold z-10 uppercase text-center pb-2"
@@ -42,8 +45,10 @@ import ContactLayout from "src/layouts/ContactLayout.astro";
           <h4 transition:name="altamira-title" class="mb-3">Alta Mira</h4>
           <img
             class="max-w-[50px]"
-            src="/media/logos/projects/Logo_AltaMira.webp"
+            src="/src/media/logos/projects/Logo_AltaMira.webp"
             alt="Alta Mira Logotipo"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </a>
@@ -51,9 +56,11 @@ import ContactLayout from "src/layouts/ContactLayout.astro";
       <a class="relative flex justify-center" href="/desarrollos/bless">
         <img
           transition:name="bless-image"
-          class="max-w-[400px]"
-          src="/media/images/pages/desarrollos/bless/bless_portada.jpg"
+          class="max-w-[400px] transition-all"
+          src="/src/media/images/pages/desarrollos/bless/bless_portada.jpg"
           alt="Bless render button"
+          loading="lazy"
+          decoding="async"
         />
         <div
           class="absolute bottom-10 text-white font-bold z-10 uppercase text-center pb-2"
@@ -61,8 +68,10 @@ import ContactLayout from "src/layouts/ContactLayout.astro";
           <h4 transition:name="bless-title" class="mb-3">Bless</h4>
           <img
             class="max-w-[60px]"
-            src="/media/logos/projects/Logo_Bless.webp"
+            src="/src/media/logos/projects/Logo_Bless.webp"
             alt="Bless Logotipo"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </a>
@@ -70,9 +79,11 @@ import ContactLayout from "src/layouts/ContactLayout.astro";
       <a class="relative flex justify-center" href="/desarrollos/riovida">
         <img
           transition:name="riovida-image"
-          class="max-w-[400px] h-full"
-          src="/media/images/pages/desarrollos/rioVida/rioVida_portada.png"
+          class="max-w-[400px] transition-all"
+          src="/src/media/images/pages/desarrollos/rioVida/rioVida_portada.png"
           alt="RioVida render button"
+          loading="lazy"
+          decoding="async"
         />
         <div
           class="absolute bottom-10 text-white font-bold z-10 uppercase text-center pb-2"
@@ -80,8 +91,10 @@ import ContactLayout from "src/layouts/ContactLayout.astro";
           <h4 transition:name="riovida-name" class="mb-3">Río Vida</h4>
           <img
             class="max-w-[60px]"
-            src="/media/logos/projects/Logo_RioVida.webp"
+            src="/src/media/logos/projects/Logo_RioVida.webp"
             alt="Alta Mira Logotipo"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </a>
@@ -111,20 +124,17 @@ import ContactLayout from "src/layouts/ContactLayout.astro";
     box-shadow: 0 8px 11px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-out;
   }
-  .imageButton_container a:hover {
-    transform: scale(1.03);
-  }
   .imageButton_container a::before {
     position: absolute;
     top: 18px;
     left: 18px;
-    width: calc(100% - 40px);
-    height: calc(100% - 40px);
+    width: calc(100% - 35px);
+    height: calc(100% - 35px);
     content: "";
     display: block;
     z-index: 2;
     border: 1px solid #fff;
-    opacity: 0.4;
+    opacity: 0.8;
   }
   .imageButton_container a::after {
     content: "";
@@ -154,3 +164,39 @@ import ContactLayout from "src/layouts/ContactLayout.astro";
     }
   }
 </style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const buttonContainer = document.querySelectorAll(
+      ".imageButton_container a",
+    );
+    const observerOptions = {
+      root: null,
+      rootMargin: "190px",
+      threshold: 0.9,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const { isIntersecting } = entry;
+        if (isIntersecting) {
+          entry.target.classList.add("fade-in");
+        } else {
+          entry.target.classList.remove("fade-in");
+        }
+      });
+    }, observerOptions);
+
+    buttonContainer.forEach((button) => {
+      observer.observe(button);
+      button.addEventListener("mouseenter", () => {
+        button.classList.remove("to-shrink");
+        button.classList.add("to-grow");
+      });
+      button.addEventListener("mouseleave", () => {
+        button.classList.remove("to-grow");
+        button.classList.add("to-shrink");
+      });
+    });
+  });
+</script>

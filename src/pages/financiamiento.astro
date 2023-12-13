@@ -1,22 +1,22 @@
 ---
 import "@src/index.css";
 import Header from "@components/Header.astro";
-import Layout from "../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
 import MainSection from "@components/MainSection.astro";
-import ContactLayout from "src/layouts/ContactLayout.astro";
-import "/src/index.css";
+import ContactLayout from "@src/layouts/ContactLayout.astro";
+import "@src/index.css";
 import { Creditos } from "@lib/creditos";
 ---
 
 <Layout title="AltaVida - Financiamiento 💵">
   <Header
-    backgroundImage="media/images/pages/financiamiento/HeaderBackground.webp"
+    backgroundImage="/src/media/images/pages/financiamiento/HeaderBackground.webp"
     title="Financiamiento"
     subtitle="Asesoría personalizada y gratuita"
   />
   <MainSection>
     <div class="max-w-[800px] mx-auto">
-      <p class="text-sm text-dark mb-8">
+      <p class="text-sm text-dark mb-12">
         Porque AltaVida piensa en tí, te ofrecemos increíbles facilidades al
         momento de comprar tu casa o departamento, queremos que formes parte de
         nuestra gran familia.
@@ -37,12 +37,14 @@ import { Creditos } from "@lib/creditos";
           Creditos.map((credito, index) => (
             <div
               id={`creditoCard-${index}`}
-              class="creditoCard w-full border-orange text-dark-gray backdrop-blur-3xl bg-slate-200 bg-opacity-60 max-w-[200px] min-h-[100px] p-5 rounded-xl shadow-md shadow-gray-200"
+              class="creditoCard w-full border-orange text-dark-gray backdrop-blur-3xl bg-navy-blue bg-opacity-5 max-w-[200px] min-h-[100px] p-5 rounded-xl shadow-md shadow-gray-200"
             >
               <img
                 class="w-full object-cover"
                 src={credito.src}
                 alt="Credit info"
+                loading="lazy"
+                decoding="async"
               />
               <h1 class="text-center text-sm font-my-raleway pt-4">
                 {credito.name}
@@ -62,8 +64,8 @@ import { Creditos } from "@lib/creditos";
     const creditosContainer = document.querySelector(".creditosContainer");
     const observerOptions = {
       root: null,
-      rootMargin: "80px",
-      threshold: 0,
+      rootMargin: "100px",
+      threshold: 0.9,
     };
 
     const observer = new IntersectionObserver((entries) => {

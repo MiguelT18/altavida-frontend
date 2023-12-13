@@ -1,6 +1,6 @@
 ---
 import { Modelos } from "@lib/catalogo";
-import "/src/index.css";
+import "@src/index.css";
 ---
 
 <div>
@@ -16,7 +16,7 @@ import "/src/index.css";
 		<ul class="modelosContainer">
 			{
 				Modelos.map((modelo) => (
-					<div class="modelo w-fit border-orange text-dark-gray backdrop-blur-3xl bg-slate-200 bg-opacity-60 max-w-[300px] min-h-[100px] p-5 rounded-xl shadow-md shadow-gray-200">
+					<div class="modelo opacity-0 w-fit border-orange text-dark-gray backdrop-blur-3xl bg-navy-blue bg-opacity-5 max-w-[300px] min-h-[100px] p-5 rounded-xl shadow-md shadow-gray-200">
 						<div class="flex flex-col gap-3">
 							<h3
 								transition:name={`${modelo.path}-catalogo-title`}
@@ -30,6 +30,8 @@ import "/src/index.css";
 									class="w-full max-w-[300px] mx-auto cursor-pointer"
 									src={modelo.src[0]}
 									alt={`Modelo ${modelo.name}`}
+									loading="lazy"
+									decoding="async"
 								/>
 							</a>
 							<p
@@ -65,8 +67,8 @@ import "/src/index.css";
 		const modelosContainer = document.querySelector(".modelosContainer");
 		const observerOptions = {
 			root: null,
-			rootMargin: "80px",
-			threshold: 0,
+			rootMargin: "200px",
+			threshold: 0.9,
 		};
 
 		const observer = new IntersectionObserver((entries) => {

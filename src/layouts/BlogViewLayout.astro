@@ -27,7 +27,7 @@ import { Icon } from "astro-icon";
 			</p>
 			<div class="text-sm flex items-center w-full justify-between">
 				<a
-					href="/blog"
+					href="/blog/post-3"
 					class="bg-orange hover:bg-[#De7700] py-2 max-lg:px-2 px-4 block w-fit transition-all text-white text-sm font-bold rounded-md"
 				>
 					Ver noticia
@@ -44,8 +44,10 @@ import { Icon } from "astro-icon";
 
 		<img
 			class="w-[40%] max-md:w-[80%] max-w-[420px] max-md:mx-auto h-full -ml-16 max-md:-mb-14 z-20"
-			src="/media/images/layouts/FocoPicture.webp"
+			src="/src/media/images/layouts/FocoPicture.webp"
 			alt="Entérate de nuestras últimas noticias en nuestro blog"
+			loading="lazy"
+			decoding="async"
 		/>
 	</article>
 </section>

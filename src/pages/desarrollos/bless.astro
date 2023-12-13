@@ -1,21 +1,23 @@
 ---
 import Header from "@components/Header.astro";
 import MainSection from "@components/MainSection.astro";
-import Previous from "public/media/icons/Previous.astro";
-import PhoneContact from "public/media/icons/PhoneContact.astro";
-import ContactLayout from "src/layouts/ContactLayout.astro";
-import Layout from "src/layouts/Layout.astro";
+import Previous from "@media/icons/Previous.astro";
+import PhoneContact from "@media/icons/PhoneContact.astro";
+import ContactLayout from "@src/layouts/ContactLayout.astro";
+import Layout from "@src/layouts/Layout.astro";
+import ExitIcon from "@src/media/icons/Exit.astro";
+import "@src/index.css";
 
 const SliderImages = [
-	"/media/images/pages/desarrollos/bless/render4.webp",
-	"/media/images/pages/desarrollos/bless/render5.webp",
-	"/media/images/pages/desarrollos/bless/render6.webp",
-	"/media/images/pages/desarrollos/bless/render7.webp",
-	"/media/images/pages/desarrollos/bless/render1.webp",
-	"/media/images/pages/desarrollos/bless/render3.webp",
-	"/media/images/pages/desarrollos/bless/render8.webp",
-	"/media/images/pages/desarrollos/bless/render9.webp",
-	"/media/images/pages/desarrollos/bless/render10.webp",
+	"/src/media/images/pages/desarrollos/bless/render4.webp",
+	"/src/media/images/pages/desarrollos/bless/render5.webp",
+	"/src/media/images/pages/desarrollos/bless/render6.webp",
+	"/src/media/images/pages/desarrollos/bless/render7.webp",
+	"/src/media/images/pages/desarrollos/bless/render1.webp",
+	"/src/media/images/pages/desarrollos/bless/render3.webp",
+	"/src/media/images/pages/desarrollos/bless/render8.webp",
+	"/src/media/images/pages/desarrollos/bless/render9.webp",
+	"/src/media/images/pages/desarrollos/bless/render10.webp",
 ];
 
 function shuffleArray(array: Array<string>) {
@@ -31,7 +33,7 @@ const shuffledImages = shuffleArray(SliderImages);
 
 <Layout title="Desarrollo - Bless">
 	<Header
-		backgroundImage="/media/images/pages/desarrollos/bless/bless_header.webp"
+		backgroundImage="/src/media/images/pages/desarrollos/bless/bless_header.webp"
 	>
 		<a
 			href="/desarrollos"
@@ -42,7 +44,9 @@ const shuffledImages = shuffleArray(SliderImages);
 		</a>
 	</Header>
 	<MainSection>
-		<article class="flex max-lg:flex-col max-w-[900px] mx-auto px-12 gap-10">
+		<article
+			class="flex max-lg:flex-col items-center max-w-[900px] mx-auto px-12 gap-10"
+		>
 			<figure class="max-lg:text-center">
 				<h1
 					transition:name="bless-title"
@@ -62,71 +66,113 @@ const shuffledImages = shuffleArray(SliderImages);
 					class="flex gap-3 items-center bg-orange hover:bg-[#De7700] transition-all mt-5 rounded-lg w-fit text-white px-5 py-2 max-lg:mx-auto"
 					href="https://wa.link/ovut67"
 				>
-					<span class="text-sm">Contacto</span>
+					<span class="text-sm">Contáctanos</span>
 					<PhoneContact />
 				</a>
 			</figure>
 			<img
 				transition:name="bless-image"
 				class="w-full max-w-[300px] max-lg:max-w-[600px] h-full mx-auto"
-				src="/media/images/pages/desarrollos/bless/bless_portada.jpg"
+				src="/src/media/images/pages/desarrollos/bless/bless_portada.jpg"
 				alt="Bless"
+				loading="lazy"
+				decoding="async"
 			/>
 		</article>
 
-		<div class="mx-auto mt-5">
-			<h1 class="text-lg uppercase font-bold text-center py-5">
-				Explora nuestra galería
-			</h1>
+		<div class="mx-auto mt-14">
+			<div class="pb-6">
+				<h1 class="text-black text-lg text-center font-bold uppercase">
+					Explora nuestra galería
+				</h1>
+				<span
+					class="bg-black block mx-auto w-[60%] max-w-[500px] h-[2px] relative after:block after:w-[30%] after:h-[5px] after:mx-auto after:bg-orange mt-5 mb-5"
+				></span>
+			</div>
 			<div class="blessImageGallery">
 				{
 					shuffledImages.map((image, index) => (
-						<figure id="bless-image-card">
+						<figure>
 							<img
+								id="bless-image-card"
 								class="w-full max-w-[1080px]"
 								src={image}
 								alt={`Image: #${index}`}
+								loading="lazy"
+								decoding="async"
 							/>
 						</figure>
 					))
 				}
 			</div>
+			<dialog id="modal">
+				<img
+					class="w-full max-w-[900px] fixed z-50 max-sm:top-1/3 top-1/4 left-0 right-0 mx-auto"
+					alt="Render bless 6"
+				/>
+				<span
+					id="close-button"
+					class="fixed hover:scale-110 transition-all top-0 mt-10 mr-10 right-0 z-50 border-4 border-orange bg-orange bg-opacity-20 rounded-full p-2 cursor-pointer"
+				>
+					<ExitIcon />
+				</span>
+			</dialog>
 		</div>
 	</MainSection>
 
 	<ContactLayout />
 </Layout>
 
+<script lang="js">
+	document.addEventListener("astro:page-load", () => {
+		const modal = document.querySelector("#modal");
+		const modalImage = document.querySelector("#modal img");
+		const closeModal = document.querySelector("#close-button");
+		const openModal = document.querySelectorAll("#bless-image-card");
+
+		openModal.forEach((open) => {
+			open.addEventListener("click", () => {
+				const image = open.getAttribute("src");
+				modalImage?.setAttribute("src", image);
+				modal?.showModal();
+				document.body.style.overflow = "hidden";
+			});
+		});
+
+		closeModal?.addEventListener("click", () => {
+			modal?.close();
+			document.body.style.overflow = "auto";
+		});
+	});
+</script>
+
 <script>
 	document.addEventListener("astro:page-load", () => {
 		const image = document.querySelectorAll("#bless-image-card");
-		image.forEach((image) => {
-			image.addEventListener("click", () => {
-				image.classList.toggle("active");
-				document.body.style.overflow = image.classList.contains("active")
-					? "hidden"
-					: "auto";
+		const observerOptions = {
+			root: null,
+			rootMargin: "150px",
+			threshold: 0.9,
+		};
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				const { isIntersecting } = entry;
+				if (isIntersecting) {
+					entry.target.classList.add("fade-in");
+				} else {
+					entry.target.classList.remove("fade-in");
+				}
 			});
+		}, observerOptions);
+
+		image.forEach((image) => {
+			observer.observe(image);
 		});
 	});
 </script>
 
 <style>
-	.blessImageGallery figure.active {
-		position: fixed;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		top: 50%;
-		left: 50%;
-		transition: background 0.3s ease;
-		transform: translate(-50%, -50%);
-		background: rgba(0, 0, 0, 0.75);
-		width: 100vw;
-		height: 100vh;
-		z-index: 100;
-	}
 	.blessImageGallery {
 		width: 100%;
 		max-width: 800px;
@@ -134,15 +180,14 @@ const shuffledImages = shuffleArray(SliderImages);
 		display: grid;
 		justify-items: center;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-		gap: 3px;
+		gap: 0.6rem;
 	}
 	.blessImageGallery figure {
-		position: relative;
 		box-shadow: 0 8px 11px rgba(0, 0, 0, 0.2);
 		transition: transform 0.3s ease-out;
 		cursor: pointer;
 	}
-	.blessImageGallery figure:not(.active):hover {
-		transform: scale(1.03);
+	.blessImageGallery figure:hover {
+		transform: scale(1.05);
 	}
 </style>
