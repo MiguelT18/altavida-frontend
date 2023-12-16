@@ -1,12 +1,13 @@
 ---
+import { Image } from "astro:assets";
+import { Modelos } from "@lib/catalogo";
 import Header from "@components/Header.astro";
 import MainSection from "@components/MainSection.astro";
 import Layout from "@layouts/Layout.astro";
 import Previous from "@media/icons/Previous.astro";
-import { Modelos } from "@lib/catalogo";
 import PhoneContact from "@media/icons/PhoneContact.astro";
 import ContactLayout from "@src/layouts/ContactLayout.astro";
-import ExitIcon from "@src/media/icons/Exit.astro";
+import ExitIcon from "@media/icons/Exit.astro";
 import "@src/index.css";
 
 export function getStaticPaths() {
@@ -67,7 +68,7 @@ const images = currentModelo?.src;
 				<img
 					transition:name={`${modelo}-catalogo-image`}
 					class="w-full max-w-[600px] h-full"
-					src={`/src/media/images/pages/catalogo/${modelo}1.webp`}
+					src={`/catalogo/${modelo}1.webp`}
 					alt={`Modelo ${modeloCapitalized}`}
 					loading="lazy"
 					decoding="async"
@@ -87,13 +88,14 @@ const images = currentModelo?.src;
 					images?.map((image) => {
 						return (
 							<figure>
-								<img
+								<Image
+									format="webp"
 									id="modeloImage"
+									width={900}
+									height={400}
 									class="w-full max-w-[400px] object-cover mt-20 cursor-pointer"
 									src={image}
 									alt={`Modelo ${modeloCapitalized}`}
-									loading="lazy"
-									decoding="async"
 								/>
 							</figure>
 						);

@@ -1,6 +1,6 @@
 ---
 image:
-	src: /src/media/images/pages/blog/blogs/post-2/navidad_card.webp
+	src: /blog/blogs/post-2/navidad_card.webp
 	alt: Razones por las que Tarija es un Lugar ideal para Vivir
 slug: post-2
 title: Compras navideñas Utilidad VS. Novedad
@@ -23,7 +23,7 @@ views: 108
   </p>
   <img
     class="w-full max-w-[480px] mx-auto my-5 rounded-xl"
-    src="/src/media/images/pages/blog/blogs/post-1/homeBlog.webp"
+    src="/blog/blogs/post-1/homeBlog.webp"
     alt="Home Blog"
     loading="lazy"
     decoding="async"

@@ -1,35 +1,48 @@
+import BancoCredito from "@media/images/pages/financiamiento/creditos/banco_bcp.png"
+import BancoBisa from "@media/images/pages/financiamiento/creditos/banco_bisa.png"
+import BancoBnb from "@media/images/pages/financiamiento/creditos/banco_bnb.jpg"
+import BancoEconomico from "@media/images/pages/financiamiento/creditos/banco_economico.jpg"
+import LaPrimera from "@media/images/pages/financiamiento/creditos/banco_efv.png"
+import BancoGanadero from "@media/images/pages/financiamiento/creditos/banco_ganadero.png"
+import BancoMercantil from "@media/images/pages/financiamiento/creditos/banco_mercantil.png"
+import BancoUnion from "@media/images/pages/financiamiento/creditos/banco_union.jpg"
+
 export interface Creditos {
 	name: string;
-	src: string;
+	src: ImageMetadata;
 }
 
 export const Creditos: Creditos[] = [
 	{
 		name: "Banco Mercantil",
-		src: "/src/media/images/pages/financiamiento/creditos/banco_mercantil.png",
+		src: BancoMercantil,
 	},
 	{
     name: "Banco de Crédito (BCP)",
-    src: "/src/media/images/pages/financiamiento/creditos/banco_bcp.png",
+    src: BancoCredito,
 	},
 	{
     name: "Banco Bisa",
-    src: "/src/media/images/pages/financiamiento/creditos/banco_bisa.png",
+    src: BancoBisa,
 	},
 	{
     name: "Banco BNB",
-    src: "/src/media/images/pages/financiamiento/creditos/banco_bnb.jpg",
+    src: BancoBnb,
 	},
 	{
     name: "Banco Economico",
-    src: "/src/media/images/pages/financiamiento/creditos/banco_economico.jpg",
+    src: BancoEconomico,
 	},
 	{
 		name: "Banco Ganadero",
-		src: "/src/media/images/pages/financiamiento/creditos/banco_ganadero.png",
+		src: BancoGanadero,
+	},
+	{
+		name: "Banco Union",
+		src: BancoUnion,
 	},
 	{
 		name: "La primera EFV",
-    src: "/src/media/images/pages/financiamiento/creditos/banco_efv.png",
+    src: LaPrimera,
 	},
 ]

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { Modelos } from "@lib/catalogo";
 import "@src/index.css";
 ---
@@ -25,13 +26,14 @@ import "@src/index.css";
 								{modelo.name}
 							</h3>
 							<a href={`/catalogo/${modelo.path}`}>
-								<img
+								<Image
+									format="webp"
 									transition:name={`${modelo.path}-catalogo-image`}
-									class="w-full max-w-[300px] mx-auto cursor-pointer"
+									width={300}
+									height={300}
+									class="mx-auto cursor-pointer"
 									src={modelo.src[0]}
 									alt={`Modelo ${modelo.name}`}
-									loading="lazy"
-									decoding="async"
 								/>
 							</a>
 							<p

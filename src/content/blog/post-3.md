@@ -1,6 +1,6 @@
 ---
 image:
-	src: /src/media/images/pages/blog/blogs/post-3/ahorraEnergia_card.webp
+	src: /blog/blogs/post-3/ahorraEnergia_card.webp
 	alt: Razones por las que Tarija es un Lugar ideal para Vivir
 slug: post-3
 title: Bájale a tu recibo de luz con estos increíbles tips
@@ -21,7 +21,7 @@ views: 3240
     reducirlo y ahorrar dinero. Afortunadamente, existen varios tips para
     ahorrar energía en casa que no solo reducirán nuestros costos, sino que
     también ayudarán al medio ambiente.
-    <img class="w-full max-w-[420px] mx-auto my-8 rounded-xl" src="/src/media/images/pages/blog/blogs/post-2/enchufe.webp" alt="Enchufe de casa" loading="lazy" decoding="async"/>
+    <img class="w-full max-w-[420px] mx-auto my-8 rounded-xl" src="/blog/blogs/post-2/enchufe.webp" alt="Enchufe de casa" loading="lazy" decoding="async"/>
     Uno de los primeros pasos para ahorrar energía es apagar los aparatos
     electrónicos cuando no los estamos usando. Muchos de estos dispositivos,
     como los televisores, continúan utilizando energía incluso cuando están
@@ -37,7 +37,7 @@ views: 3240
     valga la pena.
     <img
       class="w-full max-w-[420px] mx-auto my-8 rounded-xl"
-      src="/src/media/images/pages/blog/blogs/post-2/room01.webp"
+      src="/blog/blogs/post-2/room01.webp"
       alt="Habitación con las luces encendidas"
       loading="lazy"
       decoding="async"
@@ -49,7 +49,7 @@ views: 3240
     calor natural en lugar de encender la calefacción.
     <img
       class="w-full max-w-[420px] mx-auto my-8 rounded-xl"
-      src="/src/media/images/pages/blog/blogs/post-2/lavadora.webp"
+      src="/blog/blogs/post-2/lavadora.webp"
       alt="Habitación con las luces encendidas"
       loading="lazy"
       decoding="async"
@@ -68,7 +68,7 @@ views: 3240
     tiempo de nuestras duchas para ahorrar en el uso de agua caliente.
     <img
       class="w-full max-w-[420px] mx-auto my-8 rounded-xl"
-      src="/src/media/images/pages/blog/blogs/post-2/FocoOrangeBg.webp"
+      src="/blog/blogs/post-2/FocoOrangeBg.webp"
       alt="Habitación con las luces encendidas"
       loading="lazy"
       decoding="async"

@@ -1,26 +1,37 @@
 ---
+import { Image } from "astro:assets";
 import Header from "@components/Header.astro";
 import MainSection from "@components/MainSection.astro";
 import Previous from "@media/icons/Previous.astro";
 import PhoneContact from "@media/icons/PhoneContact.astro";
 import ContactLayout from "@src/layouts/ContactLayout.astro";
 import Layout from "@src/layouts/Layout.astro";
-import ExitIcon from "@src/media/icons/Exit.astro";
+import ExitIcon from "@media/icons/Exit.astro";
+import BlessImage from "@media/images/pages/desarrollos/bless/bless_portada.jpg";
+import Render4 from "@media/images/pages/desarrollos/bless/render4.webp";
+import Render5 from "@media/images/pages/desarrollos/bless/render5.webp";
+import Render6 from "@media/images/pages/desarrollos/bless/render6.webp";
+import Render7 from "@media/images/pages/desarrollos/bless/render7.webp";
+import Render1 from "@media/images/pages/desarrollos/bless/render1.webp";
+import Render3 from "@media/images/pages/desarrollos/bless/render3.webp";
+import Render8 from "@media/images/pages/desarrollos/bless/render8.webp";
+import Render9 from "@media/images/pages/desarrollos/bless/render9.webp";
+import Render10 from "@media/images/pages/desarrollos/bless/render10.webp";
 import "@src/index.css";
 
-const SliderImages = [
-	"/src/media/images/pages/desarrollos/bless/render4.webp",
-	"/src/media/images/pages/desarrollos/bless/render5.webp",
-	"/src/media/images/pages/desarrollos/bless/render6.webp",
-	"/src/media/images/pages/desarrollos/bless/render7.webp",
-	"/src/media/images/pages/desarrollos/bless/render1.webp",
-	"/src/media/images/pages/desarrollos/bless/render3.webp",
-	"/src/media/images/pages/desarrollos/bless/render8.webp",
-	"/src/media/images/pages/desarrollos/bless/render9.webp",
-	"/src/media/images/pages/desarrollos/bless/render10.webp",
+const SliderImages: Array<any> = [
+	Render4,
+	Render5,
+	Render6,
+	Render7,
+	Render1,
+	Render3,
+	Render8,
+	Render9,
+	Render10,
 ];
 
-function shuffleArray(array: Array<string>) {
+function shuffleArray(array: Array<any>) {
 	for (let i = array.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1));
 		[array[i], array[j]] = [array[j], array[i]];
@@ -32,9 +43,7 @@ const shuffledImages = shuffleArray(SliderImages);
 ---
 
 <Layout title="Desarrollo - Bless">
-	<Header
-		backgroundImage="/src/media/images/pages/desarrollos/bless/bless_header.webp"
-	>
+	<Header backgroundImage="/desarrollos/bless/bless_header.webp">
 		<a
 			href="/desarrollos"
 			class="text-sm flex items-center gap-2 hover:text-orange transition-all"
@@ -70,13 +79,13 @@ const shuffledImages = shuffleArray(SliderImages);
 					<PhoneContact />
 				</a>
 			</figure>
-			<img
-				transition:name="bless-image"
-				class="w-full max-w-[300px] max-lg:max-w-[600px] h-full mx-auto"
-				src="/src/media/images/pages/desarrollos/bless/bless_portada.jpg"
-				alt="Bless"
-				loading="lazy"
-				decoding="async"
+			<Image
+				format="webp"
+				transition:name="bless-desarrollos-image"
+				width={320}
+				height={320}
+				src={BlessImage}
+				alt="Bless render image"
 			/>
 		</article>
 
@@ -93,13 +102,13 @@ const shuffledImages = shuffleArray(SliderImages);
 				{
 					shuffledImages.map((image, index) => (
 						<figure>
-							<img
+							<Image
+								transition:name="bless-image-card"
 								id="bless-image-card"
-								class="w-full max-w-[1080px]"
+								width={900}
+								height={300}
 								src={image}
-								alt={`Image: #${index}`}
-								loading="lazy"
-								decoding="async"
+								alt={`Render bless ${index}`}
 							/>
 						</figure>
 					))

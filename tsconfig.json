@@ -7,7 +7,10 @@
         "src/*"
       ],
       "@media/*": [
-        "src/media/*"
+        "src/assets/media/*"
+      ],
+      "@videos/*": [
+        "src/assets/videos/*"
       ],
       "@components/*": [
         "src/components/*"

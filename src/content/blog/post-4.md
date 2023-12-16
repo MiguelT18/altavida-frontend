@@ -1,6 +1,6 @@
 ---
 image:
-	src: /src/media/images/pages/blog/blogs/post-4/comprarCasa_card.webp
+	src: /blog/blogs/post-4/comprarCasa_card.webp
 	alt: Razones por las que Tarija es un Lugar ideal para Vivir
 slug: post-4
 title: ¿Llegó el momento de comprar tu casa?
@@ -11,7 +11,7 @@ views: 2343
 <div class="text-black max-w-[80%] max-lg:max-w-[90%] mx-auto">
   <img
     class="w-full max-w-[420px] mx-auto mb-8 rounded-xl"
-    src="/src/media/images/pages/blog/blogs/post-4/financiamiento.webp"
+    src="/blog/blogs/post-4/financiamiento.webp"
     alt="¿Llego el momento de comprar tu casa?"
     loading="lazy"
     decoding="async"

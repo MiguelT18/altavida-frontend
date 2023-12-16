@@ -1,21 +1,20 @@
 ---
-import "@src/index.css";
+import { Image } from "astro:assets";
+import { Nosotros as NosotrosExito } from "@lib/nosotros";
+import { TeamGallery } from "@lib/nosotros";
 import Header from "@components/Header.astro";
 import Layout from "@layouts/Layout.astro";
 import ContactLayout from "@src/layouts/ContactLayout.astro";
-import ExitIcon from "@src/media/icons/Exit.astro";
-
-import { Nosotros as NosotrosExito } from "@lib/nosotros";
-import { TeamGallery } from "@lib/nosotros";
-
+import ExitIcon from "@media/icons/Exit.astro";
 import History from "@media/icons/History.astro";
 import HouseHeart from "@media/icons/HouseHeart.astro";
 import User from "@media/icons/User.astro";
+import "@src/index.css";
 ---
 
 <Layout title="AltaVida - Nosotros 👥">
   <Header
-    backgroundImage="/src/media/images/pages/nosotros/HeaderBackground.webp"
+    backgroundImage="/nosotros/HeaderBackground.webp"
     title="Sobre nosotros"
     subtitle="Conoce más nuestra historia"
   />
@@ -41,12 +40,13 @@ import User from "@media/icons/User.astro";
           >
             <h2 class="text-md font-bold uppercase text-black">{item.title}</h2>
             <p class="text-sm pt-2 pb-6 text-dark">{item.description}</p>
-            <img
-              class="w-full h-fit object-cover"
+            <Image
+              format="webp"
+              class="w-full object-cover"
               src={item.src}
               alt="Conoce nuestro éxito"
-              loading="lazy"
-              decoding="async"
+              width={300}
+              height={200}
             />
           </figure>
         ))
@@ -66,13 +66,14 @@ import User from "@media/icons/User.astro";
       {
         TeamGallery.map((image) => (
           <figure>
-            <img
+            <Image
+              format="webp"
               id="teamImage"
-              class="teamImage h-full object-cover cursor-pointer"
+              class="teamImage h-full w-full object-cover cursor-pointer"
               src={image}
               alt="Team picture"
-              loading="lazy"
-              decoding="async"
+              width={900}
+              height={300}
             />
           </figure>
         ))

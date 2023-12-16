@@ -1,24 +1,33 @@
 ---
+import { Image } from "astro:assets";
 import Header from "@components/Header.astro";
 import MainSection from "@components/MainSection.astro";
 import ContactLayout from "@src/layouts/ContactLayout.astro";
 import Layout from "@src/layouts/Layout.astro";
 import Previous from "@media/icons/Previous.astro";
 import PhoneContact from "@media/icons/PhoneContact.astro";
-import ExitIcon from "@src/media/icons/Exit.astro";
+import ExitIcon from "@media/icons/Exit.astro";
+import AltaMiraHeader from "@media/images/pages/desarrollos/altaMira/render7.png";
+import Render2 from "@media/images/pages/desarrollos/altaMira/render2.png";
+import Render4 from "@media/images/pages/desarrollos/altaMira/render4.png";
+import Render5 from "@media/images/pages/desarrollos/altaMira/render5.png";
+import Render6 from "@media/images/pages/desarrollos/altaMira/render6.png";
+import Render3 from "@media/images/pages/desarrollos/altaMira/render3.png";
+import Render7 from "@media/images/pages/desarrollos/altaMira/render7.png";
+import Render1 from "@media/images/pages/desarrollos/altaMira/render1.png";
 import "@src/index.css";
 
-const SliderImages: Array<string> = [
-	"/src/media/images/pages/desarrollos/altaMira/render2.png",
-	"/src/media/images/pages/desarrollos/altaMira/render4.png",
-	"/src/media/images/pages/desarrollos/altaMira/render5.png",
-	"/src/media/images/pages/desarrollos/altaMira/render6.png",
-	"/src/media/images/pages/desarrollos/altaMira/render3.png",
-	"/src/media/images/pages/desarrollos/altaMira/render7.png",
-	"/src/media/images/pages/desarrollos/altaMira/render1.png",
+const SliderImages: Array<any> = [
+	Render2,
+	Render4,
+	Render5,
+	Render6,
+	Render3,
+	Render7,
+	Render1,
 ];
 
-function shuffleArray(array: Array<string>) {
+function shuffleArray(array: Array<any>) {
 	for (let i = array.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1));
 		[array[i], array[j]] = [array[j], array[i]];
@@ -30,9 +39,7 @@ const shuffledImages = shuffleArray(SliderImages);
 ---
 
 <Layout title="Desarrollo - Alta Mira">
-	<Header
-		backgroundImage="/src/media/images/pages/desarrollos/altaMira/renderHeader.png"
-	>
+	<Header backgroundImage="/desarrollos/altamira/renderHeader.png">
 		<a
 			href="/desarrollos"
 			class="text-sm flex items-center gap-2 hover:text-orange transition-all"
@@ -67,13 +74,14 @@ const shuffledImages = shuffleArray(SliderImages);
 					<PhoneContact />
 				</a>
 			</figure>
-			<img
-				src="/src/media/images/pages/desarrollos/altaMira/render1.png"
-				transition:name="altamira-image"
+			<Image
+				format="webp"
+				src={AltaMiraHeader}
+				class={"mx-auto"}
+				transition:name="altamira-desarrollos-image"
 				alt="Alta Mira Render"
-				class="w-full max-w-[380px] max-lg:max-w-[600px] h-full mx-auto"
-				loading="lazy"
-				decoding="async"
+				width={400}
+				height={40}
 			/>
 		</article>
 
@@ -90,13 +98,13 @@ const shuffledImages = shuffleArray(SliderImages);
 				{
 					shuffledImages.map((image, index) => (
 						<figure>
-							<img
+							<Image
 								id="altamira-image-card"
-								class="w-full max-w-[1080px]"
+								format="webp"
 								src={image}
 								alt={`Image: #${index}`}
-								loading="lazy"
-								decoding="async"
+								width={900}
+								height={300}
 							/>
 						</figure>
 					))

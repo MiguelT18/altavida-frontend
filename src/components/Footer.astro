@@ -1,14 +1,18 @@
 ---
 import { Icon } from "astro-icon";
+import { Image } from "astro:assets";
+import brandLogoImage from "@media/logos/brand/brandLogo.webp";
 ---
 
 <footer
   class="w-full flex flex-col justify-center items-center gap-5 py-5 bg-white"
 >
-  <img
-    class="max-w-[100px]"
-    src="/src/media/logos/brand/brandLogo.webp"
+  <Image
+    format="webp"
+    src={brandLogoImage}
     alt="Brand Logo"
+    width={100}
+    height={100}
   />
   <div class="flex gap-8 justify-center items-center">
     <a href="https://www.facebook.com/AltaVidaBienesRaices">

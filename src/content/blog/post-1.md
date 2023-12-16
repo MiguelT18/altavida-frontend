@@ -1,6 +1,6 @@
 ---
 image:
-	src: /src/media/images/pages/blog/blogs/post-1/tarija_card.webp
+	src: /blog/blogs/post-1/tarija_card.webp
 	alt: Razones por las que Tarija es un Lugar ideal para Vivir
 slug: post-1
 title: 5 Razones por las que Tarija, Bolivia, es un Lugar Ideal para Vivir
@@ -9,7 +9,7 @@ views: 6060
 ---
 
 <div class="text-black max-w-[90%] mx-auto">
-  <img class="w-full max-w-[580px] mx-auto mb-8 rounded-xl" src="/src/media/images/pages/blog/blogs/post-1/tarija02.webp" alt="Casa Dorada de Tarija" lazy="loading" decoding="async" />
+  <img class="w-full max-w-[580px] mx-auto mb-8 rounded-xl" src="/blog/blogs/post-1/tarija02.webp" alt="Casa Dorada de Tarija" lazy="loading" decoding="async" />
   <h1 class="text-lg font-my-raleway font-bold">
     Descubre las 5 Razones por las que Tarija, Bolivia, es un Lugar Ideal
     para Vivir

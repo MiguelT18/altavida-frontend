@@ -1,31 +1,47 @@
 ---
+import { Image } from "astro:assets";
 import Header from "@components/Header.astro";
 import MainSection from "@components/MainSection.astro";
 import PhoneContact from "@media/icons/PhoneContact.astro";
 import Previous from "@media/icons/Previous.astro";
 import ContactLayout from "@src/layouts/ContactLayout.astro";
 import Layout from "@src/layouts/Layout.astro";
-import ExitIcon from "@src/media/icons/Exit.astro";
+import ExitIcon from "@media/icons/Exit.astro";
+import RioVidaHeader from "@media/images/pages/desarrollos/rioVida/rioVida_portada.png";
 import "@src/index.css";
+import Render1 from "@media/images/pages/desarrollos/rioVida/1.webp";
+import Render2 from "@media/images/pages/desarrollos/rioVida/2.webp";
+import Render3 from "@media/images/pages/desarrollos/rioVida/3.webp";
+import Render4 from "@media/images/pages/desarrollos/rioVida/4.webp";
+import Render5 from "@media/images/pages/desarrollos/rioVida/5.webp";
+import Render6 from "@media/images/pages/desarrollos/rioVida/6.webp";
+import Render7 from "@media/images/pages/desarrollos/rioVida/7.webp";
+import Render8 from "@media/images/pages/desarrollos/rioVida/8.webp";
+import Render9 from "@media/images/pages/desarrollos/rioVida/9.webp";
+import Render10 from "@media/images/pages/desarrollos/rioVida/10.webp";
+import Render11 from "@media/images/pages/desarrollos/rioVida/11.webp";
+import Render12 from "@media/images/pages/desarrollos/rioVida/12.webp";
+import Render13 from "@media/images/pages/desarrollos/rioVida/13.webp";
+import Render14 from "@media/images/pages/desarrollos/rioVida/14.webp";
 
-const SliderImages = [
-	"/src/media/images/pages/desarrollos/rioVida/1.webp",
-	"/src/media/images/pages/desarrollos/rioVida/2.webp",
-	"/src/media/images/pages/desarrollos/rioVida/3.webp",
-	"/src/media/images/pages/desarrollos/rioVida/4.webp",
-	"/src/media/images/pages/desarrollos/rioVida/5.webp",
-	"/src/media/images/pages/desarrollos/rioVida/6.webp",
-	"/src/media/images/pages/desarrollos/rioVida/7.webp",
-	"/src/media/images/pages/desarrollos/rioVida/8.webp",
-	"/src/media/images/pages/desarrollos/rioVida/9.webp",
-	"/src/media/images/pages/desarrollos/rioVida/10.webp",
-	"/src/media/images/pages/desarrollos/rioVida/11.webp",
-	"/src/media/images/pages/desarrollos/rioVida/12.webp",
-	"/src/media/images/pages/desarrollos/rioVida/13.webp",
-	"/src/media/images/pages/desarrollos/rioVida/14.webp",
+const SliderImages: Array<any> = [
+	Render1,
+	Render2,
+	Render3,
+	Render4,
+	Render5,
+	Render6,
+	Render7,
+	Render8,
+	Render9,
+	Render10,
+	Render11,
+	Render12,
+	Render13,
+	Render14,
 ];
 
-function shuffleArray(array: Array<string>) {
+function shuffleArray(array: Array<any>) {
 	for (let i = array.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1));
 		[array[i], array[j]] = [array[j], array[i]];
@@ -37,9 +53,7 @@ const shuffledImages = shuffleArray(SliderImages);
 ---
 
 <Layout title="Desarrollo - Río Vida">
-	<Header
-		backgroundImage="/src/media/images/pages/desarrollos/rioVida/renderHeader.jpg"
-	>
+	<Header backgroundImage="/desarrollos/riovida/renderHeader.jpg">
 		<a
 			href="/desarrollos"
 			class="text-sm flex items-center gap-2 hover:text-orange transition-all"
@@ -52,7 +66,7 @@ const shuffledImages = shuffleArray(SliderImages);
 		<article class="flex max-lg:flex-col max-w-[900px] mx-auto px-12 gap-10">
 			<figure class="max-lg:text-center">
 				<h1
-					transition:name="riovida-name"
+					transition:name="riovida-title"
 					class="text-lg font-bold text-black uppercase"
 				>
 					Río Vida
@@ -72,13 +86,14 @@ const shuffledImages = shuffleArray(SliderImages);
 					<PhoneContact />
 				</a>
 			</figure>
-			<img
-				transition:name="riovida-image"
-				class="w-full max-w-[380px] max-lg:max-w-[600px] h-full mx-auto"
-				src="/src/media/images/pages/desarrollos/rioVida/rioVida_portada.png"
+			<Image
+				format="webp"
+				transition:name="riovida-desarrollos-image"
+				class={"mx-auto"}
+				width={400}
+				height={400}
+				src={RioVidaHeader}
 				alt="RioVida render button"
-				loading="lazy"
-				decoding="async"
 			/>
 		</article>
 
@@ -90,13 +105,13 @@ const shuffledImages = shuffleArray(SliderImages);
 				{
 					shuffledImages.map((image, index) => (
 						<figure>
-							<img
+							<Image
+								transition:name="riovida-image-card"
 								id="riovida-image-card"
-								class="w-full max-w-[1080px]"
+								width={900}
+								height={400}
 								src={image}
-								alt={`Image: #${index}`}
-								loading="lazy"
-								decoding="async"
+								alt={`Render bless ${index}`}
 							/>
 						</figure>
 					))

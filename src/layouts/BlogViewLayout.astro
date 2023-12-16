@@ -1,5 +1,7 @@
 ---
 import { Icon } from "astro-icon";
+import { Image } from "astro:assets";
+import BlogPostImage from "@media/images/layouts/FocoPicture.webp";
 ---
 
 <section class="bg-navy-blue text-white pt-10 pb-20">
@@ -15,7 +17,7 @@ import { Icon } from "astro-icon";
 		class="pt-12 flex max-md:flex-col-reverse justify-center items-center mx-8"
 	>
 		<div
-			class="bg-white text-dark-gray w-full max-w-[520px] h-fit p-12 pr-28 max-md:p-10 max-sm:p-6 max-sm:pt-20 max-md:pt-20 max-md:text-center"
+			class="bg-white text-dark-gray w-full max-w-[520px] h-fit p-12 pr-28 max-md:p-10 max-sm:p-6 max-sm:pt-10 max-md:pt-20 max-md:text-center"
 		>
 			<h2 class="text-lg text-black font-bold mb-3">
 				Ahorra energía en casa con estos tips y bájale a tu recibo de luz
@@ -42,12 +44,12 @@ import { Icon } from "astro-icon";
 			</div>
 		</div>
 
-		<img
-			class="w-[40%] max-md:w-[80%] max-w-[420px] max-md:mx-auto h-full -ml-16 max-md:-mb-14 z-20"
-			src="/src/media/images/layouts/FocoPicture.webp"
+		<Image
+			src={BlogPostImage}
 			alt="Entérate de nuestras últimas noticias en nuestro blog"
-			loading="lazy"
-			decoding="async"
+			width={500}
+			height={50}
+			class={"-ml-14 max-md:ml-0"}
 		/>
 	</article>
 </section>

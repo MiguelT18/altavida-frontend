@@ -1,16 +1,16 @@
 ---
-import "@src/index.css";
+import { Image } from "astro:assets";
+import { Creditos } from "@lib/creditos";
 import Header from "@components/Header.astro";
 import Layout from "@layouts/Layout.astro";
 import MainSection from "@components/MainSection.astro";
 import ContactLayout from "@src/layouts/ContactLayout.astro";
 import "@src/index.css";
-import { Creditos } from "@lib/creditos";
 ---
 
 <Layout title="AltaVida - Financiamiento 💵">
   <Header
-    backgroundImage="/src/media/images/pages/financiamiento/HeaderBackground.webp"
+    backgroundImage="/src/assets/media/images/pages/financiamiento/HeaderBackground2.webp"
     title="Financiamiento"
     subtitle="Asesoría personalizada y gratuita"
   />
@@ -39,12 +39,13 @@ import { Creditos } from "@lib/creditos";
               id={`creditoCard-${index}`}
               class="creditoCard w-full border-orange text-dark-gray backdrop-blur-3xl bg-navy-blue bg-opacity-5 max-w-[200px] min-h-[100px] p-5 rounded-xl shadow-md shadow-gray-200"
             >
-              <img
-                class="w-full object-cover"
+              <Image
+                format="webp"
+                width={200}
+                height={200}
+                class="object-cover"
                 src={credito.src}
                 alt="Credit info"
-                loading="lazy"
-                decoding="async"
               />
               <h1 class="text-center text-sm font-my-raleway pt-4">
                 {credito.name}

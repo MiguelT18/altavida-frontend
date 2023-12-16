@@ -1,6 +1,6 @@
 ---
 image:
-	src: /src/media/images/pages/blog/blogs/post-5/ejercicioCasa_card.webp
+	src: /blog/blogs/post-5/ejercicioCasa_card.webp
 	alt: Razones por las que Tarija es un Lugar ideal para Vivir
 slug: post-5
 title: Comienza a hacer ejercicio desde casa
@@ -11,7 +11,7 @@ views: 1662
 <div class="text-black max-w-[80%] max-lg:max-w-[90%] mx-auto">
   <img
     class="w-full max-w-[420px] mx-auto mb-6 rounded-xl"
-    src="/src/media/images/pages/blog/blogs/post-5/homeBlog.webp"
+    src="/blog/blogs/post-5/homeBlog.webp"
     alt="Comienza a hacer ejercicio desde casa"
     loading="lazy"
     decoding="async"

@@ -1,9 +1,11 @@
 ---
+import { Image } from "astro:assets";
 import Header from "@components/Header.astro";
 import Layout from "@layouts/Layout.astro";
 import MainSection from "@components/MainSection.astro";
 import ContactLayout from "@src/layouts/ContactLayout.astro";
 import PhoneContact from "@media/icons/PhoneContact.astro";
+import TestimonioHeaderImage from "/src/assets/media/images/pages/testimoniales/testimonio_11.webp";
 ---
 
 <Layout title="AltaVida - Testimoniales 🗣">
@@ -16,8 +18,8 @@ import PhoneContact from "@media/icons/PhoneContact.astro";
       class="flex max-lg:flex-col max-lg:text-center justify-center items-center max-w-[80%] mx-auto mb-14 gap-10"
     >
       <div class="w-full max-w-[500px] mx-auto">
-        <h1 class="text-lg mb-4 text-black">
-          Conoce lo que piensan nuestros clientes de AltaVida
+        <h1 class="text-lg mb-4 text-black uppercase">
+          ¿Qué piensan nuestros clientes de AltaVida?
         </h1>
         <p class="text-sm text-dark">
           En AltaVida, la confianza de nuestros clientes es nuestra mayor
@@ -33,12 +35,12 @@ import PhoneContact from "@media/icons/PhoneContact.astro";
         </a>
       </div>
       <div>
-        <img
+        <Image
           class="w-full max-w-[420px] mx-auto object-cover"
-          src="/src/media/images/pages/testimoniales/testimonio_11.webp"
+          src={TestimonioHeaderImage}
           alt="Familias felices en AltaVida"
-          loading="lazy"
-          decoding="async"
+          width={420}
+          height={280}
         />
       </div>
     </header>
@@ -49,7 +51,7 @@ import PhoneContact from "@media/icons/PhoneContact.astro";
       >
         <video
           class="w-full max-w-[360px] h-fit object-cover"
-          src="/src/videos/testimonio1.mp4"
+          src="/videos/testimonio1.mp4"
           controls></video>
 
         <p class="text-sm max-lg:text-center m-8">
