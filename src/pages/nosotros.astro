@@ -14,7 +14,7 @@ import "@src/index.css";
 
 <Layout title="AltaVida - Nosotros 👥">
   <Header
-    backgroundImage="/nosotros/HeaderBackground.webp"
+    backgroundImage="/pages/nosotros/HeaderBackground.webp"
     title="Sobre nosotros"
     subtitle="Conoce más nuestra historia"
   />
@@ -36,7 +36,7 @@ import "@src/index.css";
         NosotrosExito.map((item) => (
           <figure
             id="exito-card"
-            class="nosotrosCard w-[90%] max-w-[380px] bg-white border-gray-200 border-2 rounded-2xl px-6 py-8 shadow-lg shadow-gray-400"
+            class="nosotrosCard w-[90%] max-w-[380px] bg-white border-gray-200 border-2 rounded-2xl px-6 py-8 shadow-lg shadow-gray-400 opacity-0"
           >
             <h2 class="text-md font-bold uppercase text-black">{item.title}</h2>
             <p class="text-sm pt-2 pb-6 text-dark">{item.description}</p>
@@ -69,7 +69,7 @@ import "@src/index.css";
             <Image
               format="webp"
               id="teamImage"
-              class="teamImage h-full w-full object-cover cursor-pointer"
+              class="teamImage h-full w-full object-cover cursor-pointer opacity-0"
               src={image}
               alt="Team picture"
               width={900}
@@ -228,8 +228,10 @@ import "@src/index.css";
       entries.forEach((entry) => {
         const { isIntersecting } = entry;
         if (isIntersecting) {
+          entry.target.classList.add("opacity-0");
           entry.target.classList.add("fade-in");
         } else {
+          entry.target.classList.remove("opacity-100");
           entry.target.classList.remove("fade-in");
         }
       });

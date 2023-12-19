@@ -1,6 +1,6 @@
 ---
 image:
-	src: /blog/blogs/post-8/blogPost.webp
+	src: /pages/blog/blogs/post-8/blogPost.webp
 	alt: Tips para cuidar el jardín para principiantes
 slug: post-8
 title: Tips para cuidar el jardín para principiantes
@@ -11,7 +11,7 @@ views: 4174
 <div class="text-black max-w-[80%] max-lg:max-w-[90%] mx-auto">
   <img
     class="w-full max-w-[420px] mx-auto mb-6 rounded-xl"
-    src="/blog/blogs/post-8/blogPost.webp"
+    src="/pages/blog/blogs/post-8/blogPost.webp"
     alt="Comienza a hacer ejercicio desde casa"
     loading="lazy"
     decoding="async"
@@ -38,7 +38,7 @@ views: 4174
   </p>
   <img
     class="w-full max-w-[420px] mx-auto mb-6 rounded-xl"
-    src="/blog/blogs/post-8/blogContent1.webp"
+    src="/pages/blog/blogs/post-8/blogContent1.webp"
     alt="Comienza a hacer ejercicio desde casa"
     loading="lazy"
     decoding="async"
@@ -60,7 +60,7 @@ views: 4174
   </p>
   <img
     class="w-full max-w-[420px] mx-auto mb-6 rounded-xl"
-    src="/blog/blogs/post-8/blogContent2.webp"
+    src="/pages/blog/blogs/post-8/blogContent2.webp"
     alt="Comienza a hacer ejercicio desde casa"
     loading="lazy"
     decoding="async"

@@ -77,8 +77,10 @@ import "@src/index.css";
 			entries.forEach((entry) => {
 				const { isIntersecting } = entry;
 				if (isIntersecting) {
+					entry.target.classList.add("opacity-0");
 					entry.target.classList.add("fade-in");
 				} else {
+					entry.target.classList.remove("opacity-100");
 					entry.target.classList.remove("fade-in");
 				}
 			});

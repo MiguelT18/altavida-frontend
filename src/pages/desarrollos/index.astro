@@ -4,12 +4,12 @@ import Header from "@components/Header.astro";
 import Layout from "@layouts/Layout.astro";
 import MainSection from "@components/MainSection.astro";
 import ContactLayout from "@layouts/ContactLayout.astro";
-import RioVidaImage from "@media/images/pages/desarrollos/rioVida/CarouselPicture.webp";
+import RioVidaImage from "@media/images/pages/desarrollos/rioVida/carousel.webp";
 import RioVidaLogo from "@media/logos/projects/Logo_RioVida.webp";
-import BlessImage from "@media/images/pages/desarrollos/bless/bless_portada.jpg";
+import BlessImage from "@media/images/pages/desarrollos/bless/carousel.jpg";
 import "@src/index.css";
 import BlessLogo from "@media/logos/projects/Logo_Bless.webp";
-import AltaMiraImage from "@media/images/pages/desarrollos/altaMira/CarouselPicture.jpg";
+import AltaMiraImage from "@media/images/pages/desarrollos/altaMira/carousel.jpg";
 import AltaMiraLogo from "@media/logos/projects/Logo_AltaMira.webp";
 ---
 
@@ -39,10 +39,12 @@ import AltaMiraLogo from "@media/logos/projects/Logo_AltaMira.webp";
     <div class="swiper">
       <div class="swiper-wrapper imageButton_container">
         <div class="swiper-slide">
-          <a class="relative flex justify-center" href="/desarrollos/altamira">
+          <a
+            class="h-full relative flex justify-center"
+            href="/desarrollos/altamira"
+          >
             <Image
               format="webp"
-              transition:name="altamira-desarrollos-image"
               width={600}
               height={600}
               src={AltaMiraImage}
@@ -51,9 +53,7 @@ import AltaMiraLogo from "@media/logos/projects/Logo_AltaMira.webp";
             <div
               class="absolute bottom-10 text-white font-bold z-10 uppercase text-center pb-2"
             >
-              <h4 transition:name="altamira-title" class="mb-3 text-[14px]">
-                Alta Mira
-              </h4>
+              <h4 class="mb-3 text-[14px]">Alta Mira</h4>
               <Image
                 format="webp"
                 src={AltaMiraLogo}
@@ -66,10 +66,12 @@ import AltaMiraLogo from "@media/logos/projects/Logo_AltaMira.webp";
         </div>
 
         <div class="swiper-slide">
-          <a class="relative flex justify-center" href="/desarrollos/bless">
+          <a
+            class="h-full relative flex justify-center"
+            href="/desarrollos/bless"
+          >
             <Image
               format="webp"
-              transition:name="bless-desarrollos-image"
               width={600}
               height={600}
               src={BlessImage}
@@ -78,9 +80,7 @@ import AltaMiraLogo from "@media/logos/projects/Logo_AltaMira.webp";
             <div
               class="absolute bottom-10 text-white font-bold z-10 uppercase text-center pb-2"
             >
-              <h4 transition:name="bless-title" class="mb-3 text-[14px]">
-                Bless
-              </h4>
+              <h4 class="mb-3 text-[14px]">Bless</h4>
               <Image
                 format="webp"
                 src={BlessLogo}
@@ -93,10 +93,12 @@ import AltaMiraLogo from "@media/logos/projects/Logo_AltaMira.webp";
         </div>
 
         <div class="swiper-slide">
-          <a class="relative flex justify-center" href="/desarrollos/riovida">
+          <a
+            class="h-full relative flex justify-center"
+            href="/desarrollos/riovida"
+          >
             <Image
               format="webp"
-              transition:name="riovida-desarrollos-image"
               width={600}
               height={600}
               src={RioVidaImage}
@@ -105,9 +107,7 @@ import AltaMiraLogo from "@media/logos/projects/Logo_AltaMira.webp";
             <div
               class="absolute bottom-10 text-white font-bold z-10 uppercase text-center pb-2"
             >
-              <h4 transition:name="riovida-title" class="mb-3 text-[14px]">
-                Río Vida
-              </h4>
+              <h4 class="mb-3 text-[14px]">Río Vida</h4>
               <Image
                 format="webp"
                 src={RioVidaLogo}
@@ -120,13 +120,13 @@ import AltaMiraLogo from "@media/logos/projects/Logo_AltaMira.webp";
         </div>
       </div>
     </div>
-    <div class="swiper-pagination"></div>
+    <div class="swiper-pagination pb-5"></div>
   </MainSection>
 
   <ContactLayout />
 </Layout>
 
-<script is:inline>
+<script lang="js">
   new Swiper(".swiper", {
     effect: "cube",
     cubeEffect: {
@@ -139,7 +139,7 @@ import AltaMiraLogo from "@media/logos/projects/Logo_AltaMira.webp";
     grabCursor: true,
     autoplay: {
       delay: 3000,
-      disableOnInteraction: false,
+      disableOnInteraction: true,
     },
     loop: true,
     autoHeight: true,
@@ -148,18 +148,15 @@ import AltaMiraLogo from "@media/logos/projects/Logo_AltaMira.webp";
 
 <style>
   .swiper {
-    width: 380px;
+    width: 100%;
+    max-width: 320px;
     height: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    padding: 0 10px;
   }
   .imageButton_container {
     margin: 0 auto;
     animation: fadeIn 0.2s ease-out;
-  }
-  .imageButton_container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
   .imageButton_container a {
     position: relative;
@@ -189,10 +186,6 @@ import AltaMiraLogo from "@media/logos/projects/Logo_AltaMira.webp";
       rgba(0, 0, 0, 0.9) 0%,
       rgba(81, 165, 194, 0) 100%
     );
-  }
-  .imageButton_container a:nth-child(2) {
-    grid-row-start: 1;
-    grid-row-end: 3;
   }
 </style>
 

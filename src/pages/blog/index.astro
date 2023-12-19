@@ -14,7 +14,7 @@ const posts = await getCollection("blog");
 
 <Layout title="AltaVida - Blog 📣">
   <Header
-    backgroundImage="/blog/HeaderBackground.webp"
+    backgroundImage="/pages/blog/HeaderBackground.webp"
     title="Blog"
     subtitle="Ponte al día con las últimas noticias"
   />
@@ -25,7 +25,7 @@ const posts = await getCollection("blog");
           return (
             <figure
               id="postCard"
-              class="bg-navy-blue bg-opacity-5 border-2 border-gray-200 rounded-2xl"
+              class="w-full max-w-[380px] bg-navy-blue bg-opacity-5 opacity-0 border-2 border-gray-200 rounded-2xl"
             >
               <a href={`/blog/${post.slug}`}>
                 <Image
@@ -52,7 +52,7 @@ const posts = await getCollection("blog");
                     {post.data.views}
                   </span>
                   <a
-                    class="bg-orange hover:bg-[#De7700] py-2 px-4 block w-fit transition-all text-white font-my-raleway font-bold rounded-md"
+                    class="bg-orange hover:bg-[#De7700] py-2 px-4 block w-fit transition-all text-md text-white font-my-raleway font-bold rounded-lg"
                     href={`/blog/${post.slug}`}
                   >
                     Ver más
@@ -84,7 +84,7 @@ const posts = await getCollection("blog");
     const postCards = document.querySelectorAll("#postCard");
     const observerOptions = {
       root: null,
-      rootMargin: "200px",
+      rootMargin: "380px",
       threshold: 0.9,
     };
 
@@ -92,8 +92,10 @@ const posts = await getCollection("blog");
       entries.forEach((entry) => {
         const { isIntersecting } = entry;
         if (isIntersecting) {
+          entry.target.classList.add("opacity-0");
           entry.target.classList.add("fade-in");
         } else {
+          entry.target.classList.remove("opacity-100");
           entry.target.classList.remove("fade-in");
         }
       });

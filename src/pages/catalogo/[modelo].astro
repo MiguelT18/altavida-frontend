@@ -67,8 +67,8 @@ const images = currentModelo?.src;
 			<div>
 				<img
 					transition:name={`${modelo}-catalogo-image`}
-					class="w-full max-w-[600px] h-full"
-					src={`/catalogo/${modelo}1.webp`}
+					class="w-full max-w-[600px] h-full object-contain"
+					src={`/pages/catalogo/${modelo}1.webp`}
 					alt={`Modelo ${modeloCapitalized}`}
 					loading="lazy"
 					decoding="async"

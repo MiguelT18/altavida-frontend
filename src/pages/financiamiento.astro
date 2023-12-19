@@ -10,7 +10,7 @@ import "@src/index.css";
 
 <Layout title="AltaVida - Financiamiento 💵">
   <Header
-    backgroundImage="/src/assets/media/images/pages/financiamiento/HeaderBackground2.webp"
+    backgroundImage="/pages/financiamiento/HeaderBackground2.webp"
     title="Financiamiento"
     subtitle="Asesoría personalizada y gratuita"
   />
@@ -73,8 +73,10 @@ import "@src/index.css";
       entries.forEach((entry) => {
         const { isIntersecting } = entry;
         if (isIntersecting) {
+          entry.target.classList.add("opacity-0");
           entry.target.classList.add("fade-in");
         } else {
+          entry.target.classList.remove("opacity-100");
           entry.target.classList.remove("fade-in");
         }
       });

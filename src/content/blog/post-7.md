@@ -1,6 +1,6 @@
 ---
 image:
-	src: /blog/blogs/post-7/blogPost.webp
+	src: /pages/blog/blogs/post-7/blogPost.webp
 	alt: La importancia de tener plantas en el hogar
 slug: post-7
 title: La importancia de tener plantas en el hogar
@@ -11,7 +11,7 @@ views: 649
 <div class="text-black max-w-[80%] max-lg:max-w-[90%] mx-auto">
   <img
     class="w-full max-w-[420px] mx-auto mb-6 rounded-xl"
-    src="/blog/blogs/post-7/blogPost.webp"
+    src="/pages/blog/blogs/post-7/blogPost.webp"
     alt="Comienza a hacer ejercicio desde casa"
     loading="lazy"
     decoding="async"
@@ -31,7 +31,7 @@ views: 649
   </p>
   <img
     class="w-full max-w-[420px] mx-auto mb-6 rounded-xl"
-    src="/blog/blogs/post-7/blogContent1.webp"
+    src="/pages/blog/blogs/post-7/blogContent1.webp"
     alt="Comienza a hacer ejercicio desde casa"
     loading="lazy"
     decoding="async"
@@ -44,7 +44,7 @@ views: 649
   </p>
   <img
     class="w-full max-w-[420px] mx-auto mb-6 rounded-xl"
-    src="/blog/blogs/post-7/blogContent2.webp"
+    src="/pages/blog/blogs/post-7/blogContent2.webp"
     alt="Comienza a hacer ejercicio desde casa"
     loading="lazy"
     decoding="async"
@@ -54,7 +54,7 @@ views: 649
   </p>
   <img
     class="w-full max-w-[420px] mx-auto mb-6 rounded-xl"
-    src="/blog/blogs/post-7/blogContent3.webp"
+    src="/pages/blog/blogs/post-7/blogContent3.webp"
     alt="Comienza a hacer ejercicio desde casa"
     loading="lazy"
     decoding="async"

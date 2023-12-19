@@ -17,7 +17,7 @@ import Render7 from "@media/images/pages/desarrollos/altaMira/render7.png";
 import Render1 from "@media/images/pages/desarrollos/altaMira/render1.png";
 import "@src/index.css";
 
-const SliderImages: Array<any> = [
+const SliderImages: Array<ImageMetadata> = [
 	Render2,
 	Render4,
 	Render5,
@@ -27,7 +27,7 @@ const SliderImages: Array<any> = [
 	Render1,
 ];
 
-function shuffleArray(array: Array<any>) {
+function shuffleArray(array: Array<ImageMetadata>) {
 	for (let i = array.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1));
 		[array[i], array[j]] = [array[j], array[i]];
@@ -39,7 +39,7 @@ const shuffledImages = shuffleArray(SliderImages);
 ---
 
 <Layout title="Desarrollo - Alta Mira">
-	<Header backgroundImage="/desarrollos/altamira/renderHeader.png">
+	<Header backgroundImage="/pages/desarrollos/altamira/renderHeader.png">
 		<a
 			href="/desarrollos"
 			class="text-sm flex items-center gap-2 hover:text-orange transition-all"
@@ -53,12 +53,7 @@ const shuffledImages = shuffleArray(SliderImages);
 			class="flex max-lg:flex-col justify-center items-center max-w-[900px] mx-auto px-12 gap-10"
 		>
 			<figure class="max-lg:text-center">
-				<h1
-					transition:name="altamira-title"
-					class="text-lg font-bold text-black uppercase"
-				>
-					Alta Mira
-				</h1>
+				<h1 class="text-lg font-bold text-black uppercase">Alta Mira</h1>
 
 				<p class="text-sm text-dark mt-3">
 					En Alta Mira, fusionamos elegancia y comodidad para ofrecerte un
@@ -78,7 +73,6 @@ const shuffledImages = shuffleArray(SliderImages);
 				format="webp"
 				src={AltaMiraHeader}
 				class={"mx-auto"}
-				transition:name="altamira-desarrollos-image"
 				alt="Alta Mira Render"
 				width={400}
 				height={40}
